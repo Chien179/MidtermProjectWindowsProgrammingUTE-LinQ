@@ -22,7 +22,7 @@ namespace MidtermProjectWindowsProgrammingUTE
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QLKS")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QuanLyKhachSan")]
 	public partial class QuanLyKhachSanDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -60,7 +60,7 @@ namespace MidtermProjectWindowsProgrammingUTE
     #endregion
 		
 		public QuanLyKhachSanDataContext() : 
-				base(global::MidtermProjectWindowsProgrammingUTE.Properties.Settings.Default.QLKSConnectionString, mappingSource)
+				base(global::MidtermProjectWindowsProgrammingUTE.Properties.Settings.Default.QuanLyKhachSanConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -340,6 +340,8 @@ namespace MidtermProjectWindowsProgrammingUTE
 		
 		private string _MaNV;
 		
+		private System.Nullable<bool> _TrangThai;
+		
 		private EntityRef<KhachHang> _KhachHang;
 		
 		private EntityRef<NhanVien> _NhanVien;
@@ -360,6 +362,8 @@ namespace MidtermProjectWindowsProgrammingUTE
     partial void OnDatCocChanged();
     partial void OnMaNVChanging(string value);
     partial void OnMaNVChanged();
+    partial void OnTrangThaiChanging(System.Nullable<bool> value);
+    partial void OnTrangThaiChanged();
     #endregion
 		
 		public ThuePhong()
@@ -478,6 +482,26 @@ namespace MidtermProjectWindowsProgrammingUTE
 					this._MaNV = value;
 					this.SendPropertyChanged("MaNV");
 					this.OnMaNVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThai", DbType="Bit")]
+		public System.Nullable<bool> TrangThai
+		{
+			get
+			{
+				return this._TrangThai;
+			}
+			set
+			{
+				if ((this._TrangThai != value))
+				{
+					this.OnTrangThaiChanging(value);
+					this.SendPropertyChanging();
+					this._TrangThai = value;
+					this.SendPropertyChanged("TrangThai");
+					this.OnTrangThaiChanged();
 				}
 			}
 		}
@@ -1492,6 +1516,8 @@ namespace MidtermProjectWindowsProgrammingUTE
 		
 		private System.Nullable<int> _SoLuong;
 		
+		private System.Nullable<bool> _TrangThai;
+		
 		private EntityRef<DichVu> _DichVu;
 		
 		private EntityRef<Phong> _Phong;
@@ -1508,6 +1534,8 @@ namespace MidtermProjectWindowsProgrammingUTE
     partial void OnNgaySuDungChanged();
     partial void OnSoLuongChanging(System.Nullable<int> value);
     partial void OnSoLuongChanged();
+    partial void OnTrangThaiChanging(System.Nullable<bool> value);
+    partial void OnTrangThaiChanged();
     #endregion
 		
 		public SuDungDichVu()
@@ -1601,6 +1629,26 @@ namespace MidtermProjectWindowsProgrammingUTE
 					this._SoLuong = value;
 					this.SendPropertyChanged("SoLuong");
 					this.OnSoLuongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThai", DbType="Bit")]
+		public System.Nullable<bool> TrangThai
+		{
+			get
+			{
+				return this._TrangThai;
+			}
+			set
+			{
+				if ((this._TrangThai != value))
+				{
+					this.OnTrangThaiChanging(value);
+					this.SendPropertyChanging();
+					this._TrangThai = value;
+					this.SendPropertyChanged("TrangThai");
+					this.OnTrangThaiChanged();
 				}
 			}
 		}
@@ -1861,7 +1909,7 @@ namespace MidtermProjectWindowsProgrammingUTE
 		
 		private string _MaNV;
 		
-		private System.Nullable<System.DateTime> _NgayVao;
+		private System.Nullable<bool> _TrangThai;
 		
 		private EntityRef<NhanVien> _NhanVien;
 		
@@ -1881,8 +1929,8 @@ namespace MidtermProjectWindowsProgrammingUTE
     partial void OnMaPhongChanged();
     partial void OnMaNVChanging(string value);
     partial void OnMaNVChanged();
-    partial void OnNgayVaoChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayVaoChanged();
+    partial void OnTrangThaiChanging(System.Nullable<bool> value);
+    partial void OnTrangThaiChanged();
     #endregion
 		
 		public ThanhToan()
@@ -2000,22 +2048,22 @@ namespace MidtermProjectWindowsProgrammingUTE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayVao", DbType="Date")]
-		public System.Nullable<System.DateTime> NgayVao
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThai", DbType="Bit")]
+		public System.Nullable<bool> TrangThai
 		{
 			get
 			{
-				return this._NgayVao;
+				return this._TrangThai;
 			}
 			set
 			{
-				if ((this._NgayVao != value))
+				if ((this._TrangThai != value))
 				{
-					this.OnNgayVaoChanging(value);
+					this.OnTrangThaiChanging(value);
 					this.SendPropertyChanging();
-					this._NgayVao = value;
-					this.SendPropertyChanged("NgayVao");
-					this.OnNgayVaoChanged();
+					this._TrangThai = value;
+					this.SendPropertyChanged("TrangThai");
+					this.OnTrangThaiChanged();
 				}
 			}
 		}

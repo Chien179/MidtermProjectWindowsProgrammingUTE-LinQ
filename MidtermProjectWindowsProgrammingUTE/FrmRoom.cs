@@ -65,58 +65,85 @@ namespace MidtermProjectWindowsProgrammingUTE
 
         private void pbSave_Click(object sender, EventArgs e)
         {
-            // Mở kết nối
-            // Thêm dữ liệu
-            //if (Them)
-            //{
-            //    for (int i = 0; i < dgvRoom.Rows.Count; i++)
-            //    {
-            //        if (txtRoomID.Text == dgvRoom.Rows[i].Cells["RoomID"].Value.ToString().Trim())
-            //        {
-            //            MessageBox.Show("Existed '" + txtRoomID.Text + "', please type another one !");
-            //            txtRoomID.ResetText();
-            //            txtArea.ResetText();
-            //            txtNote.ResetText();
-            //            txtPrice.ResetText();
-            //            txtRoomID.Focus();
-            //            return;
-            //        }
-            //    }
-            //    try
-            //    {
-            //        // Thực hiện lệnh
-            //        BLRoom blRoom = new BLRoom();
-            //        if (this.txtRoomID.Text != "" && this.cmbRoomType.Text != "")
-            //        {
-            //            float Price = 0;
-            //            if (this.txtPrice.Text != "")
-            //            {
-            //                Price = float.Parse(this.txtPrice.Text);
-            //            }
-            //            blRoom.AddRoom(this.txtRoomID.Text, this.cmbRoomType.SelectedValue.ToString(), this.cbStatus.Checked.ToString(), this.txtNote.Text, this.txtArea.Text, Price, ref err);
-            //            // Thông báo
-            //            MessageBox.Show("Added successfully!");
-            //            // Load lại dữ liệu trên DataGridView
-            //            LoadData();
-            //        }
-            //    }
-            //    catch (SqlException)
-            //    {
-            //        this.gbInfor.Text = "Information";
-            //        MessageBox.Show("Cannot add data !");
-            //    }
-            //}
-            //else
-            //{
-            //    // Thực hiện lệnh
-            //    BLRoom blRoom = new BLRoom();
-            //    blRoom.UpdateRoom(this.txtRoomID.Text, this.cmbRoomType.SelectedValue.ToString(), this.cbStatus.Checked.ToString(), this.txtNote.Text, this.txtArea.Text, float.Parse(this.txtPrice.Text), ref err);
-            //    // Thông báo
-            //    MessageBox.Show("Edited successfully!");
-            //    // Load lại dữ liệu trên DataGridView
-            //    LoadData();
-            //}
-            //// Đóng kết nối
+            
+            if (Them)
+            {
+                if (this.txtRoomID.Text == "" || this.cmbRoomType.Text == "")
+                {
+                    if (this.txtRoomID.Text == "")
+                    {
+                        MessageBox.Show("Please fill in Room ID !");
+                        return;
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Please fill in RoomType !");
+                        return;
+                    }
+                }
+                for (int i = 0; i < dgvRoom.Rows.Count; i++)
+                {
+                    if (txtRoomID.Text == dgvRoom.Rows[i].Cells["RoomID"].Value.ToString().Trim())
+                    {
+                        MessageBox.Show("Existed '" + txtRoomID.Text + "', please type another one !");
+                        txtRoomID.ResetText();
+                        txtArea.ResetText();
+                        txtNote.ResetText();
+                        txtPrice.ResetText();
+                        txtRoomID.Focus();
+                        return;
+                    }
+                }
+                try
+                {
+                    // Thực hiện lệnh
+                    BLRoom blRoom = new BLRoom();
+                    if (this.txtRoomID.Text != "" && this.cmbRoomType.Text != "")
+                    {
+                        float Price = 0;
+                        if (this.txtPrice.Text != "")
+                        {
+                            Price = float.Parse(this.txtPrice.Text);
+                        }
+                        blRoom.AddRoom(this.txtRoomID.Text, this.cmbRoomType.SelectedValue.ToString(), this.cbStatus.Checked, this.txtNote.Text, this.txtArea.Text, Price, ref err);
+                        // Thông báo
+                        MessageBox.Show("Added successfully!");
+                        // Load lại dữ liệu trên DataGridView
+                        LoadData();
+                    }
+                }
+                catch (SqlException)
+                {
+                    this.gbInfor.Text = "Information";
+                    MessageBox.Show("Cannot add data !");
+                }
+            }
+            else
+            {
+                if (this.txtRoomID.Text == "" || this.cmbRoomType.Text == "")
+                {
+                    if (this.txtRoomID.Text == "")
+                    {
+                        MessageBox.Show("Please fill in Room ID !");
+                        return;
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Please fill in RoomType !");
+                        return;
+                    }
+                }
+                // Thực hiện lệnh
+                BLRoom blRoom = new BLRoom();
+                blRoom.UpdateRoom(this.txtRoomID.Text, this.cmbRoomType.SelectedValue.ToString(), this.cbStatus.Checked, this.txtNote.Text, this.txtArea.Text, float.Parse(this.txtPrice.Text), ref err);
+                // Thông báo
+                MessageBox.Show("Edited successfully!");
+                // Load lại dữ liệu trên DataGridView
+                LoadData();
+            }
+            // Đóng kết nối
         }
 
         private void dgvRoom_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -351,61 +378,48 @@ namespace MidtermProjectWindowsProgrammingUTE
         #region Functions
         void LoadData()
         {
-            //try
-            //{
-            //dtRoom = new DataTable();
-            //dtRoom.Clear();
-
-            //dtTypeRoom = new DataTable();
-            //dtTypeRoom.Clear();
-
-            //DataSet dsTypeRoom = dbTypeRoom.GetTypeRoom();
-            //DataSet ds = dbRoom.GetRoom();
-
-            //dtTypeRoom = dsTypeRoom.Tables[0];
-            //dtRoom = ds.Tables[0];
-            // Đưa dữ liệu lên DataGridView
-            //dgvRoom.DataSource = dtRoom;
-            //    // Thay đổi độ rộng cột
-            //    dgvRoom.AutoResizeColumns();
-            //    // Xóa trống các đối tượng trong Panel
-            //    this.txtRoomID.ResetText();
-            //    this.cmbRoomType.ResetText();
-            //    this.txtArea.ResetText();
-            //    this.txtNote.ResetText();
-            //    this.txtPrice.ResetText();
-            //    this.txtRoomID.Enabled = true;
-            //    this.cmbRoomType.Enabled = true;
-            //    this.txtArea.Enabled = true;
-            //    this.txtNote.Enabled = true;
-            //    this.txtPrice.Enabled = true;
-            //    // Không cho thao tác trên các nút Lưu / Hủy
-            //    this.pbSave.Enabled = false;
-            //    this.pbCancel.Enabled = false;
-            //    this.pbSave.Hide();
-            //    this.pbCancel.Hide();
-            //    // Không cho thao tác trên các ô thông tin
-            //    this.gbInfor.Enabled = false;
-            //    this.gbInfor.Text = "Information";
-            //    // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
-            //    this.pbAdd.Enabled = true;
-            //    this.pbEdit.Enabled = true;
-            //    this.pbDelete.Enabled = true;
-            //    this.pbBack.Enabled = true;
-            //    this.pbAdd.Show();
-            //    this.pbEdit.Show();
-            //    this.pbDelete.Show();
-            //    this.pbBack.Show();
-            //    //đẩy dữ liệu lên cmbTypeRoom
-            //    this.cmbRoomType.DataSource = dtTypeRoom;
-            //    this.cmbRoomType.DisplayMember = dtTypeRoom.Columns[0].ToString();
-            //    this.cmbRoomType.ValueMember = dtTypeRoom.Columns[0].ToString();
-            //    dgvRoom_CellClick(null, null);
-        //}
-        //    catch (SqlException)
-        //    {
-        //        MessageBox.Show("Cannot get data from table 'Phong' !");
-        //    }
+            try
+            {
+                
+                dgvRoom.DataSource = dbRoom.GetRoom();
+                // Thay đổi độ rộng cột
+                dgvRoom.AutoResizeColumns();
+                // Xóa trống các đối tượng trong Panel
+                this.txtRoomID.ResetText();
+                this.cmbRoomType.ResetText();
+                this.txtArea.ResetText();
+                this.txtNote.ResetText();
+                this.txtPrice.ResetText();
+                this.txtRoomID.Enabled = true;
+                this.cmbRoomType.Enabled = true;
+                this.txtArea.Enabled = true;
+                this.txtNote.Enabled = true;
+                this.txtPrice.Enabled = true;
+                // Không cho thao tác trên các nút Lưu / Hủy
+                this.pbSave.Enabled = false;
+                this.pbCancel.Enabled = false;
+                this.pbSave.Hide();
+                this.pbCancel.Hide();
+                // Không cho thao tác trên các ô thông tin
+                this.gbInfor.Enabled = false;
+                this.gbInfor.Text = "Information";
+                // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
+                this.pbAdd.Enabled = true;
+                this.pbEdit.Enabled = true;
+                this.pbDelete.Enabled = true;
+                this.pbBack.Enabled = true;
+                this.pbAdd.Show();
+                this.pbEdit.Show();
+                this.pbDelete.Show();
+                this.pbBack.Show();
+                //đẩy dữ liệu lên cmbTypeRoom
+                
+                dgvRoom_CellClick(null, null);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Cannot get data from table 'Phong' !");
+            }
         }
 
         private void Search()
