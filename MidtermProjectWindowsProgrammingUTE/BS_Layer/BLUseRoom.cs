@@ -50,5 +50,36 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 
             return true;
         }
+        public bool UpdateCheckInDay(string MaPhong, DateTime NgayVao, ref string err)
+        {
+            QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
+            var tpQuery = (from tp in qlKS.ThuePhongs
+                           where tp.MaPhong == MaPhong
+                           select tp).SingleOrDefault();
+
+            if (tpQuery != null)
+            {
+                tpQuery.NgayVao = NgayVao;
+                qlKS.SubmitChanges();
+            }
+
+            return true;
+        }
+
+        public bool UpdateUseRoomStatus(string MaPhong,bool TrangThai, ref string err)
+        {
+            QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
+            var tpQuery = (from tp in qlKS.ThuePhongs
+                           where tp.MaPhong == MaPhong
+                           select tp).SingleOrDefault();
+
+            if (tpQuery != null)
+            {
+                tpQuery.TrangThai = true;
+                qlKS.SubmitChanges();
+            }
+
+            return true;
+        }
     }
 }

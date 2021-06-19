@@ -48,5 +48,20 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 
             return true;
         }
+        public bool UpdateStatusUseService(string MaPhong,bool TrangThai, ref string err)
+        {
+            QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
+            var sddvQuery = (from sddv in qlKS.SuDungDichVus
+                             where sddv.MaPhong == MaPhong
+                             select sddv).SingleOrDefault();
+
+            if (sddvQuery != null)
+            {
+                sddvQuery.TrangThai = true;
+                qlKS.SubmitChanges();
+            }
+
+            return true;
+        }
     }
 }
