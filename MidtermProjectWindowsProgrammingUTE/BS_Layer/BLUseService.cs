@@ -14,7 +14,7 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
         }
 
 
-        public bool AddUseService(string MaPhong, string MaDV, DateTime NgaySuDung, int SoLuong, bool TrangThai, ref string err)
+        public bool AddUseService(string MaPhong, string MaDV, DateTime NgaySuDung, int SoLuong, ref string err)
         {
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             SuDungDichVu sddv = new SuDungDichVu();
@@ -22,7 +22,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             sddv.MaDV = MaDV;
             sddv.NgaySuDung = NgaySuDung;
             sddv.SoLuong = SoLuong;
-            sddv.TrangThai = TrangThai;
 
             qlKS.SuDungDichVus.InsertOnSubmit(sddv);
             qlKS.SuDungDichVus.Context.SubmitChanges();
@@ -30,7 +29,7 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 
         }
 
-        public bool UpdateUseService(string MaPhong, string MaDV, DateTime NgaySuDung, int SoLuong, bool TrangThai, ref string err)
+        public bool UpdateUseService(string MaPhong, string MaDV, DateTime NgaySuDung, int SoLuong, ref string err)
         {
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             var sddvQuery = (from sddv in qlKS.SuDungDichVus
@@ -44,7 +43,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
                 sddvQuery.MaDV = MaDV;
                 sddvQuery.NgaySuDung = NgaySuDung;
                 sddvQuery.SoLuong = SoLuong;
-                sddvQuery.TrangThai = TrangThai;
                 qlKS.SubmitChanges();
             }
 

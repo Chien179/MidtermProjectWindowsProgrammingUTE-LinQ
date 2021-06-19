@@ -105,7 +105,7 @@ namespace MidtermProjectWindowsProgrammingUTE
                         {
                             Deposit = float.Parse(this.txtDeposit.Text);
                         }
-                        blUseRoom.AddUseRoom(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), float.Parse(this.txtDeposit.Text), this.cmbStaffID.Text, this.cbPaid.Checked, ref err);
+                        blUseRoom.AddUseRoom(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), float.Parse(this.txtDeposit.Text), this.cmbStaffID.Text, ref err);
                         // Load lại dữ liệu trên DataGridView
                         LoadData();
                         // Thông báo
@@ -143,7 +143,7 @@ namespace MidtermProjectWindowsProgrammingUTE
                 }
                 // Thực hiện lệnh
                 BLUseRoom blUseRoom = new BLUseRoom();
-                blUseRoom.UpdateUseRoom(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), float.Parse(this.txtDeposit.Text), this.cmbStaffID.Text, this.cbPaid.Checked, ref err);
+                blUseRoom.UpdateUseRoom(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), float.Parse(this.txtDeposit.Text), this.cmbStaffID.Text, ref err);
                 MessageBox.Show("Edited successfully!");
                 // Load lại dữ liệu trên DataGridView
                 LoadData();
@@ -165,7 +165,6 @@ namespace MidtermProjectWindowsProgrammingUTE
 
                     this.dtpDateIn.Text = dgvRoom.Rows[r].Cells["CheckIn"].Value.ToString();
                     this.txtDeposit.Text = dgvRoom.Rows[r].Cells["Deposit"].Value.ToString();
-                    this.cbPaid.Checked = Convert.ToBoolean(dgvRoom.Rows[r].Cells["Paid"].Value);
                 }
             }
             catch (Exception)

@@ -46,7 +46,6 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.pbCancel = new System.Windows.Forms.PictureBox();
             this.pbSave = new System.Windows.Forms.PictureBox();
             this.gbInfor = new System.Windows.Forms.GroupBox();
-            this.cbPaid = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
@@ -234,7 +233,6 @@ namespace MidtermProjectWindowsProgrammingUTE
             // 
             // gbInfor
             // 
-            this.gbInfor.Controls.Add(this.cbPaid);
             this.gbInfor.Controls.Add(this.label2);
             this.gbInfor.Controls.Add(this.label4);
             this.gbInfor.Controls.Add(this.txtAmount);
@@ -250,17 +248,6 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.gbInfor.TabIndex = 85;
             this.gbInfor.TabStop = false;
             this.gbInfor.Text = "Information";
-            // 
-            // cbPaid
-            // 
-            this.cbPaid.AutoSize = true;
-            this.cbPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.cbPaid.Location = new System.Drawing.Point(378, 113);
-            this.cbPaid.Name = "cbPaid";
-            this.cbPaid.Size = new System.Drawing.Size(66, 28);
-            this.cbPaid.TabIndex = 101;
-            this.cbPaid.Text = "Paid";
-            this.cbPaid.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -403,6 +390,5 @@ namespace MidtermProjectWindowsProgrammingUTE
         private System.Windows.Forms.DataGridViewTextBoxColumn DateUse;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Paid;
-        private System.Windows.Forms.CheckBox cbPaid;
     }
 }

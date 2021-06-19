@@ -74,7 +74,6 @@ namespace MidtermProjectWindowsProgrammingUTE
                     this.cmbServiceID.Text = dgvUseService.Rows[r].Cells["ServiceID"].Value.ToString();
                     this.dtpDateIn.Text = dgvUseService.Rows[r].Cells["DateUse"].Value.ToString();
                     this.txtAmount.Text = dgvUseService.Rows[r].Cells["Amount"].Value.ToString();
-                    this.cbPaid.Checked = Convert.ToBoolean(dgvUseService.Rows[r].Cells["Paid"].Value);
                 }
             }
             catch (Exception)
@@ -187,7 +186,7 @@ namespace MidtermProjectWindowsProgrammingUTE
                             {
                                 Amount = int.Parse(this.txtAmount.Text);
                             }
-                            blUseService.AddUseService(this.cmbRoomID.SelectedValue.ToString(), this.cmbServiceID.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), int.Parse(this.txtAmount.Text), this.cbPaid.Checked, ref err);
+                            blUseService.AddUseService(this.cmbRoomID.SelectedValue.ToString(), this.cmbServiceID.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), int.Parse(this.txtAmount.Text),  ref err);
 
                             // Load lại dữ liệu trên DataGridView
                             LoadData();
@@ -226,7 +225,7 @@ namespace MidtermProjectWindowsProgrammingUTE
                     }
                     // Thực hiện lệnh
                     BLUseService blUseService = new BLUseService();
-                    blUseService.UpdateUseService(this.cmbRoomID.SelectedValue.ToString(), this.cmbServiceID.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), int.Parse(this.txtAmount.Text), this.cbPaid.Checked, ref err);
+                    blUseService.UpdateUseService(this.cmbRoomID.SelectedValue.ToString(), this.cmbServiceID.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), int.Parse(this.txtAmount.Text), ref err);
                     // Thông báo
                     MessageBox.Show("Edited successfully!");
                     // Load lại dữ liệu trên DataGridView

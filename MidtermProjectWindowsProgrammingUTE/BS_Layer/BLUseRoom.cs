@@ -14,7 +14,7 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
         }
 
 
-        public bool AddUseRoom(string MaPhong, string CMND, DateTime NgayVao, float DatCoc, String MaNV, bool TrangThai, ref string err)
+        public bool AddUseRoom(string MaPhong, string CMND, DateTime NgayVao, float DatCoc, String MaNV, ref string err)
         {
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             ThuePhong tp = new ThuePhong();
@@ -23,7 +23,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             tp.NgayVao = NgayVao;
             tp.DatCoc = DatCoc;
             tp.MaNV = MaNV;
-            tp.TrangThai = TrangThai;
 
             qlKS.ThuePhongs.InsertOnSubmit(tp);
             qlKS.ThuePhongs.Context.SubmitChanges();
@@ -31,7 +30,7 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 
         }
 
-        public bool UpdateUseRoom(string MaPhong, string CMND, DateTime NgayVao, float DatCoc, String MaNV, bool TrangThai, ref string err)
+        public bool UpdateUseRoom(string MaPhong, string CMND, DateTime NgayVao, float DatCoc, String MaNV, ref string err)
         {
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             var tpQuery = (from tp in qlKS.ThuePhongs
@@ -46,7 +45,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
                 tpQuery.NgayVao = NgayVao;
                 tpQuery.DatCoc = DatCoc;
                 tpQuery.MaNV = MaNV;
-                tpQuery.TrangThai = TrangThai;
                 qlKS.SubmitChanges();
             }
 
