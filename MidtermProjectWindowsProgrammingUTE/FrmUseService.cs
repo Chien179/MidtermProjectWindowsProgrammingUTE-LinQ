@@ -165,7 +165,7 @@ namespace MidtermProjectWindowsProgrammingUTE
             //                {
             //                    Amount = int.Parse(this.txtAmount.Text);
             //                }
-            //                blUseService.AddUseService(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), this.dtpDateIn.Text, Amount, ref err);
+            //blUseService.AddUseService(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), this.dtpDateIn.Text, Amount, ref err);
             //                // Thông báo
             //                MessageBox.Show("Added successfully!");
             //                // Load lại dữ liệu trên DataGridView
@@ -274,8 +274,8 @@ namespace MidtermProjectWindowsProgrammingUTE
         #region Functions
         void LoadData()
         {
-            //try
-            //{
+            try
+            {
                 //dtUseService = new DataTable();
                 //dtRoom = new DataTable();
                 //dtService = new DataTable();
@@ -292,49 +292,49 @@ namespace MidtermProjectWindowsProgrammingUTE
 
                 //DataSet dsService = dbService.GetService();
                 //dtService = dsService.Tables[0];
-                // Đưa dữ liệu lên DataGridView
-            //    dgvUseService.DataSource = dtUseService;
-            //    // Thay đổi độ rộng cột
-            //    dgvUseService.AutoResizeColumns();
-            //    // Xóa trống các đối tượng trong Panel
-            //    this.cmbRoomID.ResetText();
-            //    this.cmbCMND.ResetText();
-            //    this.dtpDateIn.ResetText();
-            //    this.txtAmount.ResetText();
-            //    this.cmbRoomID.Enabled = true;
-            //    this.cmbCMND.Enabled = true;
-            //    this.dtpDateIn.Enabled = true;
-            //    this.txtAmount.Enabled = true;
-            //    // Không cho thao tác trên các nút Lưu / Hủy
-            //    this.pbSave.Enabled = false;
-            //    this.pbCancel.Enabled = false;
-            //    this.pbSave.Hide();
-            //    this.pbCancel.Hide();
-            //    // Không cho thao tác trên các ô thông tin
-            //    this.gbInfor.Enabled = false;
-            //    this.gbInfor.Text = "Information";
+                //Đưa dữ liệu lên DataGridView
+                dgvUseService.DataSource = dtUseService;
+                // Thay đổi độ rộng cột
+                dgvUseService.AutoResizeColumns();
+                // Xóa trống các đối tượng trong Panel
+                this.cmbRoomID.ResetText();
+                this.cmbCMND.ResetText();
+                this.dtpDateIn.ResetText();
+                this.txtAmount.ResetText();
+                this.cmbRoomID.Enabled = true;
+                this.cmbCMND.Enabled = true;
+                this.dtpDateIn.Enabled = true;
+                this.txtAmount.Enabled = true;
+                // Không cho thao tác trên các nút Lưu / Hủy
+                this.pbSave.Enabled = false;
+                this.pbCancel.Enabled = false;
+                this.pbSave.Hide();
+                this.pbCancel.Hide();
+                // Không cho thao tác trên các ô thông tin
+                this.gbInfor.Enabled = false;
+                this.gbInfor.Text = "Information";
 
-            //    // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
-            //    this.pbAdd.Enabled = true;
-            //    this.pbEdit.Enabled = true;
-            //    this.pbBack.Enabled = true;
-            //    this.pbAdd.Show();
-            //    this.pbEdit.Show();
-            //    this.pbBack.Show();
-            //    //đẩy dữ liệu lên cmb RoomID và CMND
-            //    this.cmbRoomID.DataSource = dtRoom;
-            //    this.cmbRoomID.DisplayMember = dtRoom.Columns[0].ToString();
-            //    this.cmbRoomID.ValueMember = dtRoom.Columns[0].ToString();
+                // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
+                this.pbAdd.Enabled = true;
+                this.pbEdit.Enabled = true;
+                this.pbBack.Enabled = true;
+                this.pbAdd.Show();
+                this.pbEdit.Show();
+                this.pbBack.Show();
+                //đẩy dữ liệu lên cmb RoomID và CMND
+                this.cmbRoomID.DataSource = dtRoom;
+                this.cmbRoomID.DisplayMember = dtRoom.Columns[0].ToString();
+                this.cmbRoomID.ValueMember = dtRoom.Columns[0].ToString();
 
-            //    this.cmbCMND.DataSource = dtService;
-            //    this.cmbCMND.DisplayMember = dtService.Columns[0].ToString();
-            //    this.cmbCMND.ValueMember = dtService.Columns[0].ToString();
-            //    dgvUseService_CellClick(null, null);
-            //}
-            //catch (SqlException)
-            //{
-            //    MessageBox.Show("Cannot get data from table 'Su Dung Phong' !");
-            //}
+                this.cmbCMND.DataSource = dtService;
+                this.cmbCMND.DisplayMember = dtService.Columns[0].ToString();
+                this.cmbCMND.ValueMember = dtService.Columns[0].ToString();
+                dgvUseService_CellClick(null, null);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Cannot get data from table 'Su Dung Phong' !");
+            }
         }
 
         private void Search()

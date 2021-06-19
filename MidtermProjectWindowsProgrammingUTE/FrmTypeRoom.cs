@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+
 namespace MidtermProjectWindowsProgrammingUTE
 {
     public partial class FrmTypeRoom : Form
@@ -60,52 +61,52 @@ namespace MidtermProjectWindowsProgrammingUTE
         private void pbSave_Click(object sender, EventArgs e)
         {
 
-            //// Mở kết nối
-            //// Thêm dữ liệu
-            //if (Them)
-            //{
-            //    for(int i = 0; i < dgvTypeRoom.Rows.Count; i++)
-            //    {
-            //        string t = txtRoomType.Text.Trim();
-            //        if (t == dgvTypeRoom.Rows[i].Cells["RoomType"].Value.ToString())
-            //        {
-            //            MessageBox.Show("Existed '" + t + "', please type another one !");
-            //            txtRoomType.ResetText();
-            //            txtNameType.ResetText();
-            //            txtRoomType.Focus();
-            //            return;
-            //        }
-            //    }
-            //    try
-            //    {
-            //        // Thực hiện lệnh
-            //        BLTypeRoom blTypeRoom = new BLTypeRoom();
-            //        if (this.txtRoomType.Text != "")
-            //        {
-            //            blTypeRoom.AddTypeRoom(this.txtRoomType.Text, this.txtNameType.Text, ref err);
-            //            // Thông báo
-            //            MessageBox.Show("Added successfully!");
-            //            // Load lại dữ liệu trên DataGridView
-            //            LoadData();
-            //        }
-            //    }
-            //    catch (SqlException)
-            //    {
-            //        this.gbInfor.Text = "Information";
-            //        MessageBox.Show("Add failed!");
-            //    }
-            //}
-            //else
-            //{
-            //    // Thực hiện lệnh
-            //    BLTypeRoom blTypeRoom = new BLTypeRoom();
-            //    blTypeRoom.UpdateTypeRoom(this.txtRoomType.Text, this.txtNameType.Text, ref err);
-            //    // Thông báo
-            //    MessageBox.Show("Edited successfully!");
-            //    // Load lại dữ liệu trên DataGridView
-            //    LoadData();
-            //}
-            //// Đóng kết nối
+            // Mở kết nối
+            // Thêm dữ liệu
+            if (Them)
+            {
+                for (int i = 0; i < dgvTypeRoom.Rows.Count; i++)
+                {
+                    string t = txtRoomType.Text.Trim();
+                    if (t == dgvTypeRoom.Rows[i].Cells["RoomType"].Value.ToString())
+                    {
+                        MessageBox.Show("Existed '" + t + "', please type another one !");
+                        txtRoomType.ResetText();
+                        txtNameType.ResetText();
+                        txtRoomType.Focus();
+                        return;
+                    }
+                }
+                try
+                {
+                    // Thực hiện lệnh
+                    BLTypeRoom blTypeRoom = new BLTypeRoom();
+                    if (this.txtRoomType.Text != "")
+                    {
+                        blTypeRoom.AddTypeRoom(this.txtRoomType.Text, this.txtNameType.Text, ref err);
+                        // Thông báo
+                        MessageBox.Show("Added successfully!");
+                        // Load lại dữ liệu trên DataGridView
+                        LoadData();
+                    }
+                }
+                catch (SqlException)
+                {
+                    this.gbInfor.Text = "Information";
+                    MessageBox.Show("Add failed!");
+                }
+            }
+            else
+            {
+                // Thực hiện lệnh
+                BLTypeRoom blTypeRoom = new BLTypeRoom();
+                blTypeRoom.UpdateTypeRoom(this.txtRoomType.Text, this.txtNameType.Text, ref err);
+                // Thông báo
+                MessageBox.Show("Edited successfully!");
+                // Load lại dữ liệu trên DataGridView
+                LoadData();
+            }
+            // Đóng kết nối
         }
         private void pbBack_Click(object sender, EventArgs e)
         {
@@ -314,45 +315,45 @@ namespace MidtermProjectWindowsProgrammingUTE
         #region Functions
         void LoadData()
         {
-            //try
-            //{
-            //dtTypeRoom = new DataTable();
-            //dtTypeRoom.Clear();
-            //DataSet ds = dbTypeRoom.GetTypeRoom();
-            //dtTypeRoom = ds.Tables[0];
-            //    // Đưa dữ liệu lên DataGridView
-            //    dgvTypeRoom.DataSource = dtTypeRoom;
-            //    // Thay đổi độ rộng cột
-            //    dgvTypeRoom.AutoResizeColumns();
-            //    // Xóa trống các đối tượng trong Panel
-            //    this.txtRoomType.ResetText();
-            //    this.txtNameType.ResetText();
-            //    this.txtRoomType.Enabled = true;
-            //    this.txtNameType.Enabled = true;
-            //    // Không cho thao tác trên các nút Lưu / Hủy
-            //    this.pbSave.Enabled = false;
-            //    this.pbCancel.Enabled = false;
-            //    this.pbSave.Hide();
-            //    this.pbCancel.Hide();
-            //    // Không cho thao tác trên các ô thông tin
-            //    this.gbInfor.Enabled = false;
-            //    this.gbInfor.Text = "Information";
-            //    // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
-            //    this.pbAdd.Enabled = true;
-            //    this.pbEdit.Enabled = true;
-            //    this.pbDelete.Enabled = true;
-            //    this.pbBack.Enabled = true;
-            //    this.pbAdd.Show();
-            //    this.pbEdit.Show();
-            //    this.pbDelete.Show();
-            //    this.pbBack.Show();
-            //    //
-            //    dgvTypeRoom_CellClick(null, null);
-            //}
-            //catch (SqlException)
-            //{
-            //    MessageBox.Show("Cannot get data from table 'LoaiPhong' !");
-            //}
+            try
+            {
+                //dtTypeRoom = new DataTable();
+                //dtTypeRoom.Clear();
+                //DataSet ds = dbTypeRoom.GetTypeRoom();
+                //dtTypeRoom = ds.Tables[0];
+                // Đưa dữ liệu lên DataGridView
+                dgvTypeRoom.DataSource = dbTypeRoom.GetTypeRoom();
+                // Thay đổi độ rộng cột
+                dgvTypeRoom.AutoResizeColumns();
+                // Xóa trống các đối tượng trong Panel
+                this.txtRoomType.ResetText();
+                this.txtNameType.ResetText();
+                this.txtRoomType.Enabled = true;
+                this.txtNameType.Enabled = true;
+                // Không cho thao tác trên các nút Lưu / Hủy
+                this.pbSave.Enabled = false;
+                this.pbCancel.Enabled = false;
+                this.pbSave.Hide();
+                this.pbCancel.Hide();
+                // Không cho thao tác trên các ô thông tin
+                this.gbInfor.Enabled = false;
+                this.gbInfor.Text = "Information";
+                // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
+                this.pbAdd.Enabled = true;
+                this.pbEdit.Enabled = true;
+                this.pbDelete.Enabled = true;
+                this.pbBack.Enabled = true;
+                this.pbAdd.Show();
+                this.pbEdit.Show();
+                this.pbDelete.Show();
+                this.pbBack.Show();
+                //
+                dgvTypeRoom_CellClick(null, null);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Cannot get data from table 'LoaiPhong' !");
+            }
         }
 
         private void Search()

@@ -276,80 +276,80 @@ namespace MidtermProjectWindowsProgrammingUTE
         #region Functions
         void LoadData()
         {
-            //try
-            //{
-            //dtUseRoom = new DataTable();
-            //dtRoom = new DataTable();
-            //dtClient = new DataTable();
-            //dtStaff = new DataTable();
+            try
+            {
+                //dtUseRoom = new DataTable();
+                //dtRoom = new DataTable();
+                //dtClient = new DataTable();
+                //dtStaff = new DataTable();
 
-            //dtUseRoom.Clear();
-            //dtRoom.Clear();
-            //dtClient.Clear();
-            //dtStaff.Clear();
+                //dtUseRoom.Clear();
+                //dtRoom.Clear();
+                //dtClient.Clear();
+                //dtStaff.Clear();
 
-            //DataSet dsstaff = dbStaff.GetStaff();
-            //dtStaff = dsstaff.Tables[0];
+                //DataSet dsstaff = dbStaff.GetStaff();
+                //dtStaff = dsstaff.Tables[0];
 
-            //DataSet ds = dbUseRoom.GetUseRoom();
-            //dtUseRoom = ds.Tables[0];
+                //DataSet ds = dbUseRoom.GetUseRoom();
+                //dtUseRoom = ds.Tables[0];
 
-            //DataSet dsRoom = dbRoom.GetRoom();
-            //dtRoom = dsRoom.Tables[0];
+                //DataSet dsRoom = dbRoom.GetRoom();
+                //dtRoom = dsRoom.Tables[0];
 
-            //DataSet dsClient = dbCLient.GetClient();
-            //dtClient = dsClient.Tables[0];
-            // Đưa dữ liệu lên DataGridView
-            //dgvRoom.DataSource = dtUseRoom;
-            //    // Thay đổi độ rộng cột
-            //    dgvRoom.AutoResizeColumns();
-            //    // Xóa trống các đối tượng trong Panel
-            //    this.cmbRoomID.ResetText();
-            //    this.cmbCMND.ResetText();
-            //    this.dtpDateIn.ResetText();
-            //    this.cmbStaffID.ResetText();
-            //    this.txtDeposit.ResetText();
-            //    this.cmbRoomID.Enabled = true;
-            //    this.cmbCMND.Enabled = true;
-            //    this.dtpDateIn.Enabled = true;
-            //    this.cmbStaffID.Enabled = true;
-            //    this.txtDeposit.Enabled = true;
-            //    // Không cho thao tác trên các nút Lưu / Hủy
-            //    this.pbSave.Enabled = false;
-            //    this.pbCancel.Enabled = false;
-            //    this.pbSave.Hide();
-            //    this.pbCancel.Hide();
-            //    // Không cho thao tác trên các ô thông tin
-            //    this.gbInfor.Enabled = false;
-            //    this.gbInfor.Text = "Information";
+                //DataSet dsClient = dbCLient.GetClient();
+                //dtClient = dsClient.Tables[0];
+                //Đưa dữ liệu lên DataGridView
+                dgvRoom.DataSource = dtUseRoom;
+                // Thay đổi độ rộng cột
+                dgvRoom.AutoResizeColumns();
+                // Xóa trống các đối tượng trong Panel
+                this.cmbRoomID.ResetText();
+                this.cmbCMND.ResetText();
+                this.dtpDateIn.ResetText();
+                this.cmbStaffID.ResetText();
+                this.txtDeposit.ResetText();
+                this.cmbRoomID.Enabled = true;
+                this.cmbCMND.Enabled = true;
+                this.dtpDateIn.Enabled = true;
+                this.cmbStaffID.Enabled = true;
+                this.txtDeposit.Enabled = true;
+                // Không cho thao tác trên các nút Lưu / Hủy
+                this.pbSave.Enabled = false;
+                this.pbCancel.Enabled = false;
+                this.pbSave.Hide();
+                this.pbCancel.Hide();
+                // Không cho thao tác trên các ô thông tin
+                this.gbInfor.Enabled = false;
+                this.gbInfor.Text = "Information";
 
-            //    // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
-            //    this.pbAdd.Enabled = true;
-            //    this.pbEdit.Enabled = true;
-            //    this.pbBack.Enabled = true;
-            //    this.pbAdd.Show();
-            //    this.pbEdit.Show();
-            //    this.pbBack.Show();
-            //    //đẩy dữ liệu lên cmb RoomID và CMND
-            //    this.cmbRoomID.DataSource = dtRoom;
-            //    this.cmbRoomID.DisplayMember = dtRoom.Columns[0].ToString();
-            //    this.cmbRoomID.ValueMember = dtRoom.Columns[0].ToString();
+                // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
+                this.pbAdd.Enabled = true;
+                this.pbEdit.Enabled = true;
+                this.pbBack.Enabled = true;
+                this.pbAdd.Show();
+                this.pbEdit.Show();
+                this.pbBack.Show();
+                //đẩy dữ liệu lên cmb RoomID và CMND
+                this.cmbRoomID.DataSource = dtRoom;
+                this.cmbRoomID.DisplayMember = dtRoom.Columns[0].ToString();
+                this.cmbRoomID.ValueMember = dtRoom.Columns[0].ToString();
 
-            //    this.cmbCMND.DataSource = dtClient;
-            //    this.cmbCMND.DisplayMember = dtClient.Columns[0].ToString();
-            //    this.cmbCMND.ValueMember = dtClient.Columns[0].ToString();
+                this.cmbCMND.DataSource = dtClient;
+                this.cmbCMND.DisplayMember = dtClient.Columns[0].ToString();
+                this.cmbCMND.ValueMember = dtClient.Columns[0].ToString();
 
-            //    this.cmbStaffID.DataSource = dtStaff;
-            //    this.cmbStaffID.DisplayMember = dtStaff.Columns[0].ToString();
-            //    this.cmbStaffID.ValueMember = dtStaff.Columns[0].ToString();
+                this.cmbStaffID.DataSource = dtStaff;
+                this.cmbStaffID.DisplayMember = dtStaff.Columns[0].ToString();
+                this.cmbStaffID.ValueMember = dtStaff.Columns[0].ToString();
 
 
-            //    dgvRoom_CellClick(null, null);
-            //}
-            //catch (SqlException)
-            //{
-            //    MessageBox.Show("Cannot get data from table 'Su Dung Phong' !");
-            //}
+                dgvRoom_CellClick(null, null);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Cannot get data from table 'Su Dung Phong' !");
+            }
         }
 
         private void Search()

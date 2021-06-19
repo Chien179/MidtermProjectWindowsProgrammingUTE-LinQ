@@ -145,51 +145,51 @@ namespace MidtermProjectWindowsProgrammingUTE
         {
             // Mở kết nối
             // Thêm dữ liệu
-            //if (Them)
-            //{
-            //    for (int i = 0; i < dgvStaff.Rows.Count; i++)
-            //    {
-            //        string t = txtID.Text.Trim();
-            //        if (t == dgvStaff.Rows[i].Cells["ID"].Value.ToString())
-            //        {
-            //            MessageBox.Show("Existed '" + t + "', please type another one !");
-            //            txtID.ResetText();
-            //            txtChucVu.ResetText();
-            //            txtName.ResetText();
-            //            txtID.Focus();
-            //            return;
-            //        }
-            //    }
-            //    try
-            //    {
-            //        // Thực hiện lệnh
-            //        BLStaff blStaff = new BLStaff();
-            //        if (this.txtID.Text != "")
-            //        {
-            //            blStaff.AddStaff(this.txtID.Text, this.txtName.Text, this.txtChucVu.Text, this.dtpBirthDate.Text, this.cbFemale.Checked.ToString(), ref err);
-            //            // Thông báo
-            //            MessageBox.Show("Added successfully!");
-            //            // Load lại dữ liệu trên DataGridView
-            //            LoadData();
-            //        }
-            //    }
-            //    catch (SqlException)
-            //    {
-            //        this.gbInfor.Text = "Information";
-            //        MessageBox.Show("Cannot add data !");
-            //    }
-            //}
-            //else
-            //{
-            //    // Thực hiện lệnh
-            //    BLStaff blStaff = new BLStaff();
-            //    blStaff.UpdateStaff(this.txtID.Text, this.txtName.Text, this.txtChucVu.Text, this.dtpBirthDate.Text, this.cbFemale.Checked.ToString(), ref err);                
-            //    // Thông báo
-            //    MessageBox.Show("Edited successfully!");
-            //    // Load lại dữ liệu trên DataGridView
-            //    LoadData();
-            //}
-            //// Đóng kết nối
+            if (Them)
+            {
+                for (int i = 0; i < dgvStaff.Rows.Count; i++)
+                {
+                    string t = txtID.Text.Trim();
+                    if (t == dgvStaff.Rows[i].Cells["ID"].Value.ToString())
+                    {
+                        MessageBox.Show("Existed '" + t + "', please type another one !");
+                        txtID.ResetText();
+                        txtChucVu.ResetText();
+                        txtName.ResetText();
+                        txtID.Focus();
+                        return;
+                    }
+                }
+                try
+                {
+                    // Thực hiện lệnh
+                    BLStaff blStaff = new BLStaff();
+                    if (this.txtID.Text != "")
+                    {
+                        blStaff.AddStaff(this.txtID.Text, this.txtName.Text, this.txtChucVu.Text, this.dtpBirthDate.Text, this.cbFemale.Checked.ToString(), ref err);
+                        // Thông báo
+                        MessageBox.Show("Added successfully!");
+                        // Load lại dữ liệu trên DataGridView
+                        LoadData();
+                    }
+                }
+                catch (SqlException)
+                {
+                    this.gbInfor.Text = "Information";
+                    MessageBox.Show("Cannot add data !");
+                }
+            }
+            else
+            {
+                // Thực hiện lệnh
+                BLStaff blStaff = new BLStaff();
+                blStaff.UpdateStaff(this.txtID.Text, this.txtName.Text, this.txtChucVu.Text, this.dtpBirthDate.Text, this.cbFemale.Checked.ToString(), ref err);
+                // Thông báo
+                MessageBox.Show("Edited successfully!");
+                // Load lại dữ liệu trên DataGridView
+                LoadData();
+            }
+            // Đóng kết nối
         }
 
         private void pbCancel_Click(object sender, EventArgs e)
@@ -318,49 +318,49 @@ namespace MidtermProjectWindowsProgrammingUTE
         #region Functions
         void LoadData()
         {
-            //try
-            //{
-            //dtStaff = new DataTable();
-            //dtStaff.Clear();
-            //DataSet ds = dbStaff.GetStaff();
-            //dtStaff = ds.Tables[0];
-            // Đưa dữ liệu lên DataGridView
-            //    dgvStaff.DataSource = dtStaff;
-            //    // Thay đổi độ rộng cột
-            //    dgvStaff.AutoResizeColumns();
-            //    // Xóa trống các đối tượng trong Panel
-            //    this.txtID.ResetText();
-            //    this.txtName.ResetText();
-            //    this.txtChucVu.ResetText();
-            //    this.dtpBirthDate.ResetText();
-            //    this.txtID.Enabled = true;
-            //    this.txtName.Enabled = true;
-            //    this.txtChucVu.Enabled = true;
-            //    this.dtpBirthDate.Enabled = true;
-            //    // Không cho thao tác trên các nút Lưu / Hủy
-            //    this.pbSave.Enabled = false;
-            //    this.pbCancel.Enabled = false;
-            //    this.pbSave.Hide();
-            //    this.pbCancel.Hide();
-            //    // Không cho thao tác trên các ô thông tin
-            //    this.gbInfor.Enabled = false;
-            //    this.gbInfor.Text = "Information";
-            //    // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
-            //    this.pbAdd.Enabled = true;
-            //    this.pbEdit.Enabled = true;
-            //    this.pbBack.Enabled = true;
-            //    this.pbDelete.Enabled = true;
-            //    this.pbAdd.Show();
-            //    this.pbEdit.Show();
-            //    this.pbBack.Show();
-            //    this.pbDelete.Show();
-            //    //
-            //    dgvStaff_CellClick(null, null);
-            //}
-            //catch (SqlException)
-            //{
-            //    MessageBox.Show("Cannot get data from table 'NhanVien' !");
-            //}
+            try
+            {
+                //dtStaff = new DataTable();
+                //dtStaff.Clear();
+                //DataSet ds = dbStaff.GetStaff();
+                //dtStaff = ds.Tables[0];
+                //Đưa dữ liệu lên DataGridView
+                dgvStaff.DataSource = dbStaff.GetStaff();
+                // Thay đổi độ rộng cột
+                dgvStaff.AutoResizeColumns();
+                // Xóa trống các đối tượng trong Panel
+                this.txtID.ResetText();
+                this.txtName.ResetText();
+                this.txtChucVu.ResetText();
+                this.dtpBirthDate.ResetText();
+                this.txtID.Enabled = true;
+                this.txtName.Enabled = true;
+                this.txtChucVu.Enabled = true;
+                this.dtpBirthDate.Enabled = true;
+                // Không cho thao tác trên các nút Lưu / Hủy
+                this.pbSave.Enabled = false;
+                this.pbCancel.Enabled = false;
+                this.pbSave.Hide();
+                this.pbCancel.Hide();
+                // Không cho thao tác trên các ô thông tin
+                this.gbInfor.Enabled = false;
+                this.gbInfor.Text = "Information";
+                // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
+                this.pbAdd.Enabled = true;
+                this.pbEdit.Enabled = true;
+                this.pbBack.Enabled = true;
+                this.pbDelete.Enabled = true;
+                this.pbAdd.Show();
+                this.pbEdit.Show();
+                this.pbBack.Show();
+                this.pbDelete.Show();
+                //
+                dgvStaff_CellClick(null, null);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Cannot get data from table 'NhanVien' !");
+            }
         }
 
         private void Search()
