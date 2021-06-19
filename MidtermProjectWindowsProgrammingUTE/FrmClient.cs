@@ -1,11 +1,10 @@
 ﻿using MidtermProjectWindowsProgrammingUTE.BS_Layer;
 using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
-
+using System.IO;
+using System.Drawing;
 namespace MidtermProjectWindowsProgrammingUTE
 {
     public partial class FrmClient : Form
@@ -67,7 +66,21 @@ namespace MidtermProjectWindowsProgrammingUTE
             // Thêm dữ liệu
             if (Them)
             {
-                for(int i = 0;i < dgvClient.Rows.Count; i++)
+                if (this.txtID.Text == "" || this.txtName.Text == "")
+                {
+                    if (this.txtID.Text == "")
+                    {
+                        MessageBox.Show("Please fill in CMND !");
+                        return;
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Please fill in Name !");
+                        return;
+                    }
+                }
+                for (int i = 0;i < dgvClient.Rows.Count; i++)
                 {
                     string t = txtID.Text.Trim();
                     if(t == dgvClient.Rows[i].Cells["CMND"].Value.ToString())
@@ -88,7 +101,7 @@ namespace MidtermProjectWindowsProgrammingUTE
                     BLClient blClient = new BLClient();
                     if (this.txtID.Text != "")
                     {
-                        blClient.AddClient(this.txtID.Text, this.txtName.Text, this.txtAddress.Text, this.txtPhoneNumber.Text, this.cbFemale.Checked.ToString(), this.dtpBirthDate.Text, ref err);
+                        blClient.AddClient(this.txtID.Text, this.txtName.Text, this.txtAddress.Text, this.txtPhoneNumber.Text, this.cbFemale.Checked, DateTime.Parse(this.dtpBirthDate.Text), ref err);
                         // Thông báo
                         MessageBox.Show("Added successfully!");
                         // Load lại dữ liệu trên DataGridView
@@ -103,9 +116,23 @@ namespace MidtermProjectWindowsProgrammingUTE
             }
             else
             {
+                if (this.txtID.Text == "" || this.txtName.Text == "")
+                {
+                    if (this.txtID.Text == "")
+                    {
+                        MessageBox.Show("Please fill in CMND !");
+                        return;
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Please fill in Name !");
+                        return;
+                    }
+                }
                 // Thực hiện lệnh
                 BLClient blClient = new BLClient();
-                blClient.UpdateClient(this.txtID.Text, this.txtName.Text, this.txtAddress.Text, this.txtPhoneNumber.Text, this.cbFemale.Checked.ToString(), this.dtpBirthDate.Text, ref err);
+                blClient.UpdateClient(this.txtID.Text, this.txtName.Text, this.txtAddress.Text, this.txtPhoneNumber.Text, this.cbFemale.Checked, DateTime.Parse(this.dtpBirthDate.Text), ref err);
                 // Thông báo
                 MessageBox.Show("Edited successfully!");
                 // Load lại dữ liệu trên DataGridView
@@ -365,51 +392,55 @@ namespace MidtermProjectWindowsProgrammingUTE
         #region Functions
         void LoadData()
         {
-            //try
-            //{
-            //dtClient = new DataTable();
-            //dtClient.Clear();
-            //DataSet ds = dbClient.GetClient();
-            //dtClient = ds.Tables[0];
-            // Đưa dữ liệu lên DataGridView
-            //    dgvClient.DataSource = dbClient.GetClient();
-            //    // Thay đổi độ rộng cột
-            //    dgvClient.AutoResizeColumns();
-            //    // Xóa trống các đối tượng trong Panel
-            //    this.txtID.ResetText();
-            //    this.txtName.ResetText();
-            //    this.txtAddress.ResetText();
-            //    this.txtPhoneNumber.ResetText();
-            //    this.dtpBirthDate.ResetText();
-            //    this.txtID.Enabled = true;
-            //    this.txtName.Enabled = true;
-            //    this.txtAddress.Enabled = true;
-            //    this.txtPhoneNumber.Enabled = true;
-            //    this.dtpBirthDate.Enabled = true;
-            //    // Không cho thao tác trên các nút Lưu / Hủy
-            //    this.pbSave.Enabled = false;
-            //    this.pbCancel.Enabled = false;
-            //    this.pbSave.Hide();
-            //    this.pbCancel.Hide();
-            //    // Không cho thao tác trên các ô thông tin
-            //    this.gbInfor.Enabled = false;
-            //    this.gbInfor.Text = "Information";
-            //    // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
-            //    this.pbAdd.Enabled = true;
-            //    this.pbEdit.Enabled = true;
-            //    this.pbBack.Enabled = true;
-            //    this.pbDelete.Enabled = true;
-            //    this.pbAdd.Show();
-            //    this.pbEdit.Show();
-            //    this.pbBack.Show();
-            //    this.pbDelete.Show();
-            //    //
-            //    dgvClient_CellClick(null, null);
-            //}
-            //catch (SqlException)
-            //{
-            //    MessageBox.Show("Cannot get data from table 'KhachHang' !");
-            //}
+            try
+            {
+                //List<string> proKH = dbClient.GetClientProperties();
+                //// Đưa dữ liệu lên DataGridView
+                //(dgvClient.Columns["KhachHang"] as DataGridViewComboBoxColumn).DataSource = dbClient.GetClient();
+                //(dgvClient.Columns["KhachHang"] as DataGridViewComboBoxColumn).DisplayMember = proKH[1];
+                //(dgvClient.Columns["KhachHang"] as DataGridViewComboBoxColumn).ValueMember = proKH[0];
+
+                dgvClient.DataSource = dbClient.GetClient();
+
+                //dgvClient.Columns["KhachHang1"].Visible = false;
+
+                // Thay đổi độ rộng cột
+                dgvClient.AutoResizeColumns();
+                // Xóa trống các đối tượng trong Panel
+                this.txtID.ResetText();
+                this.txtName.ResetText();
+                this.txtAddress.ResetText();
+                this.txtPhoneNumber.ResetText();
+                this.dtpBirthDate.ResetText();
+                this.txtID.Enabled = true;
+                this.txtName.Enabled = true;
+                this.txtAddress.Enabled = true;
+                this.txtPhoneNumber.Enabled = true;
+                this.dtpBirthDate.Enabled = true;
+                // Không cho thao tác trên các nút Lưu / Hủy
+                this.pbSave.Enabled = false;
+                this.pbCancel.Enabled = false;
+                this.pbSave.Hide();
+                this.pbCancel.Hide();
+                // Không cho thao tác trên các ô thông tin
+                this.gbInfor.Enabled = false;
+                this.gbInfor.Text = "Information";
+                // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
+                this.pbAdd.Enabled = true;
+                this.pbEdit.Enabled = true;
+                this.pbBack.Enabled = true;
+                this.pbDelete.Enabled = true;
+                this.pbAdd.Show();
+                this.pbEdit.Show();
+                this.pbBack.Show();
+                this.pbDelete.Show();
+                //
+                dgvClient_CellClick(null, null);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Cannot get data from table 'KhachHang' !");
+            }
         }
 
         private void Search()

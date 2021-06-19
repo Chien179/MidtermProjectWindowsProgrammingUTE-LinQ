@@ -68,60 +68,88 @@ namespace MidtermProjectWindowsProgrammingUTE
 
         private void pbSave_Click(object sender, EventArgs e)
         {
-            //// Mở kết nối
-            //// Thêm dữ liệu
-            //if (Them)
-            //{
-            //    for(int i = 0;i < dgvService.Rows.Count; i++)
-            //    {
-            //        string t = txtServiceID.Text.Trim();
-            //        if(t == dgvService.Rows[i].Cells["ID"].Value.ToString().Trim())
-            //        {
-            //            MessageBox.Show("Existed '" + t + "', please type another one !");
-            //            txtServiceID.ResetText();
-            //            txtPrice.ResetText();
-            //            txtServiceName.ResetText();
-            //            txtUnit.ResetText();
+            // Mở kết nối
+            // Thêm dữ liệu
+            if (Them)
+            {
+                if (this.txtServiceID.Text == "" || this.txtServiceName.Text == "")
+                {
+                    if (this.txtServiceID.Text == "")
+                    {
+                        MessageBox.Show("Please fill in Service ID !");
+                        return;
+                    }
+                    else
+                    {
 
-            //            txtServiceID.Focus();
-            //            return;
-            //        }
-            //    }
-            //    try
-            //    {
-            //        // Thực hiện lệnh
-            //        BLService blService = new BLService();
-            //        if (this.txtServiceID.Text != "")
-            //        {
-            //            float Price = 0;
-            //            if (this.txtPrice.Text != "")
-            //            {
-            //                Price = float.Parse(this.txtPrice.Text);
-            //            }
-            //            blService.AddService(this.txtServiceID.Text, this.txtServiceName.Text, Price, this.txtUnit.Text, ref err);
-            //            // Thông báo
-            //            MessageBox.Show("Added successfully!");
-            //            // Load lại dữ liệu trên DataGridView
-            //            LoadData();
-            //        }
-            //    }
-            //    catch (SqlException)
-            //    {
-            //        this.gbInfor.Text = "Information";
-            //        MessageBox.Show("Added failed!");
-            //    }
-            //}
-            //else
-            //{
-            //    // Thực hiện lệnh
-            //    BLService blService = new BLService();
-            //    blService.UpdateService(this.txtServiceID.Text, this.txtServiceName.Text, float.Parse(this.txtPrice.Text), this.txtUnit.Text, ref err);
-            //    // Thông báo
-            //    MessageBox.Show("Edited successfully");
-            //    // Load lại dữ liệu trên DataGridView
-            //    LoadData();
-            //}
-            //// Đóng kết nối
+                        MessageBox.Show("Please fill in Service Name !");
+                        return;
+                    }
+                }
+                for (int i = 0; i < dgvService.Rows.Count; i++)
+                {
+                    string t = txtServiceID.Text.Trim();
+                    if (t == dgvService.Rows[i].Cells["ID"].Value.ToString().Trim())
+                    {
+                        MessageBox.Show("Existed '" + t + "', please type another one !");
+                        txtServiceID.ResetText();
+                        txtPrice.ResetText();
+                        txtServiceName.ResetText();
+                        txtUnit.ResetText();
+
+                        txtServiceID.Focus();
+                        return;
+                    }
+                }
+                try
+                {
+                    // Thực hiện lệnh
+                    BLService blService = new BLService();
+                    if (this.txtServiceID.Text != "")
+                    {
+                        float Price = 0;
+                        if (this.txtPrice.Text != "")
+                        {
+                            Price = float.Parse(this.txtPrice.Text);
+                        }
+                        blService.AddService(this.txtServiceID.Text, this.txtServiceName.Text, Price, this.txtUnit.Text, ref err);
+                        // Thông báo
+                        MessageBox.Show("Added successfully!");
+                        // Load lại dữ liệu trên DataGridView
+                        LoadData();
+                    }
+                }
+                catch (SqlException)
+                {
+                    this.gbInfor.Text = "Information";
+                    MessageBox.Show("Added failed!");
+                }
+            }
+            else
+            {
+                if (this.txtServiceID.Text == "" || this.txtServiceName.Text == "")
+                {
+                    if (this.txtServiceID.Text == "")
+                    {
+                        MessageBox.Show("Please fill in Service ID !");
+                        return;
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Please fill in Service Name !");
+                        return;
+                    }
+                }
+                // Thực hiện lệnh
+                BLService blService = new BLService();
+                blService.UpdateService(this.txtServiceID.Text, this.txtServiceName.Text, float.Parse(this.txtPrice.Text), this.txtUnit.Text, ref err);
+                // Thông báo
+                MessageBox.Show("Edited successfully");
+                // Load lại dữ liệu trên DataGridView
+                LoadData();
+            }
+            // Đóng kết nối
         }
         private void pbBack_Click(object sender, EventArgs e)
         {
@@ -352,49 +380,45 @@ namespace MidtermProjectWindowsProgrammingUTE
         #region Functions
         void LoadData()
         {
-            //try
-            //{
-            //dtService = new DataTable();
-            //dtService.Clear();
-            //DataSet ds = dbService.GetService();
-            //dtService = ds.Tables[0];
-            // Đưa dữ liệu lên DataGridView
-            //    dgvService.DataSource = dtService;
-            //    // Thay đổi độ rộng cột
-            //    dgvService.AutoResizeColumns();
-            //    // Xóa trống các đối tượng trong Panel
-            //    this.txtServiceID.ResetText();
-            //    this.txtServiceName.ResetText();
-            //    this.txtPrice.ResetText();
-            //    this.txtUnit.ResetText();
-            //    this.txtServiceID.Enabled = true;
-            //    this.txtServiceName.Enabled = true;
-            //    this.txtPrice.Enabled = true;
-            //    this.txtUnit.Enabled = true;
-            //    // Không cho thao tác trên các nút Lưu / Hủy
-            //    this.pbSave.Enabled = false;
-            //    this.pbCancel.Enabled = false;
-            //    this.pbSave.Hide();
-            //    this.pbCancel.Hide();
-            //    // Không cho thao tác trên các ô thông tin
-            //    this.gbInfor.Enabled = false;
-            //    this.gbInfor.Text = "Information";
-            //    // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
-            //    this.pbAdd.Enabled = true;
-            //    this.pbEdit.Enabled = true;
-            //    this.pbDelete.Enabled = true;
-            //    this.pbBack.Enabled = true;
-            //    this.pbAdd.Show();
-            //    this.pbEdit.Show();
-            //    this.pbDelete.Show();
-            //    this.pbBack.Show();
-            //    //
-            //    dgvService_CellClick(null, null);
-            //}
-            //catch (SqlException)
-            //{
-            //    MessageBox.Show("Cannot get data from table 'Service' !");
-            //}
+            try
+            {
+                
+                dgvService.DataSource = dbService.GetService();
+                // Thay đổi độ rộng cột
+                dgvService.AutoResizeColumns();
+                // Xóa trống các đối tượng trong Panel
+                this.txtServiceID.ResetText();
+                this.txtServiceName.ResetText();
+                this.txtPrice.ResetText();
+                this.txtUnit.ResetText();
+                this.txtServiceID.Enabled = true;
+                this.txtServiceName.Enabled = true;
+                this.txtPrice.Enabled = true;
+                this.txtUnit.Enabled = true;
+                // Không cho thao tác trên các nút Lưu / Hủy
+                this.pbSave.Enabled = false;
+                this.pbCancel.Enabled = false;
+                this.pbSave.Hide();
+                this.pbCancel.Hide();
+                // Không cho thao tác trên các ô thông tin
+                this.gbInfor.Enabled = false;
+                this.gbInfor.Text = "Information";
+                // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
+                this.pbAdd.Enabled = true;
+                this.pbEdit.Enabled = true;
+                this.pbDelete.Enabled = true;
+                this.pbBack.Enabled = true;
+                this.pbAdd.Show();
+                this.pbEdit.Show();
+                this.pbDelete.Show();
+                this.pbBack.Show();
+                //
+                dgvService_CellClick(null, null);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Cannot get data from table 'Service' !");
+            }
         }
 
         private void Search()

@@ -7,7 +7,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
     {
         public Table<TaiKhoan> GetLogin()
         {
-            DataSet ds = new DataSet();
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             return qlKS.TaiKhoans;
         }
