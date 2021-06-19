@@ -39,7 +39,7 @@ namespace MidtermProjectWindowsProgrammingUTE
         {
             // Xóa trống các đối tượng trong Panel 
             this.cmbRoomID.ResetText();
-            this.cmbCMND.ResetText();
+            this.cmbServiceID.ResetText();
             this.dtpDateIn.ResetText();
             this.txtAmount.ResetText();
             // Cho thao tác trên các nút Thêm / Sửa / Xóa / Thoát 
@@ -71,9 +71,10 @@ namespace MidtermProjectWindowsProgrammingUTE
                     int r = dgvUseService.CurrentCell.RowIndex;
                     // Chuyển thông tin lên panel
                     this.cmbRoomID.Text = dgvUseService.Rows[r].Cells["RoomID"].Value.ToString();
-                    this.cmbCMND.Text = dgvUseService.Rows[r].Cells["ServiceID"].Value.ToString();
+                    this.cmbServiceID.Text = dgvUseService.Rows[r].Cells["ServiceID"].Value.ToString();
                     this.dtpDateIn.Text = dgvUseService.Rows[r].Cells["DateUse"].Value.ToString();
                     this.txtAmount.Text = dgvUseService.Rows[r].Cells["Amount"].Value.ToString();
+                    this.cbPaid.Checked = Convert.ToBoolean(dgvUseService.Rows[r].Cells["Paid"].Value);
                 }
             }
             catch (Exception)
@@ -93,11 +94,11 @@ namespace MidtermProjectWindowsProgrammingUTE
             Them = true;
             // Xóa trống các đối tượng trong Panel
             this.cmbRoomID.ResetText();
-            this.cmbCMND.ResetText();
+            this.cmbServiceID.ResetText();
             this.dtpDateIn.ResetText();
             this.txtAmount.ResetText();
             this.cmbRoomID.Enabled = true;
-            this.cmbCMND.Enabled = true;
+            this.cmbServiceID.Enabled = true;
             this.dtpDateIn.Enabled = true;
             this.txtAmount.Enabled = true;
             // Cho thao tác trên các nút Lưu / Hủy / Panel
@@ -142,54 +143,98 @@ namespace MidtermProjectWindowsProgrammingUTE
 
                 //
                 this.cmbRoomID.Enabled = false;
-                this.cmbCMND.Enabled = false;
+                this.cmbServiceID.Enabled = false;
             }
         }
 
         private void pbSave_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    // Mở kết nối
-            //    // Thêm dữ liệu
-            //    if (Them)
-            //    {
-            //        try
-            //        {
-            //            // Thực hiện lệnh
-            //            BLUseService blUseService = new BLUseService();
-            //            if (this.cmbRoomID.Text != "" && this.cmbCMND.Text != "")
-            //            {
-            //                int Amount = 0;
-            //                if (this.txtAmount.Text != "")
-            //                {
-            //                    Amount = int.Parse(this.txtAmount.Text);
-            //                }
-            //blUseService.AddUseService(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), this.dtpDateIn.Text, Amount, ref err);
-            //                // Thông báo
-            //                MessageBox.Show("Added successfully!");
-            //                // Load lại dữ liệu trên DataGridView
-            //                LoadData();
-            //            }
-            //        }
-            //        catch (SqlException)
-            //        {
-            //            MessageBox.Show("Added failed!");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        // Thực hiện lệnh
-            //        BLUseService blUseService = new BLUseService();
-            //        blUseService.UpdateUseService(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), this.dtpDateIn.Text, int.Parse(this.txtAmount.Text), ref err);
-            //        // Thông báo
-            //        MessageBox.Show("Edited successfully!");
-            //        // Load lại dữ liệu trên DataGridView
-            //        LoadData();
-            //    }
-            //    // Đóng kết nối
-            //}
-            //catch { }
+            try
+            {
+                // Mở kết nối
+                // Thêm dữ liệu
+                if (Them)
+                {
+                    if (this.cmbRoomID.Text == "" || this.cmbServiceID.Text == "" || this.txtAmount.Text == "")
+                    {
+                        if (this.cmbRoomID.Text == "")
+                        {
+                            MessageBox.Show("No Room ID selected !");
+                            return;
+                        }
+                        else
+                        {
+                            if (this.cmbServiceID.Text == "")
+                            {
+                                MessageBox.Show("No Service ID selected !");
+                                return;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please don't leave blank input");
+                                return;
+                            }
+                        }
+                    }
+                    try
+                    {
+                        // Thực hiện lệnh
+                        BLUseService blUseService = new BLUseService();
+                        if (this.cmbRoomID.Text != "" && this.cmbServiceID.Text != "")
+                        {
+                            int Amount = 0;
+                            if (this.txtAmount.Text != "")
+                            {
+                                Amount = int.Parse(this.txtAmount.Text);
+                            }
+                            blUseService.AddUseService(this.cmbRoomID.SelectedValue.ToString(), this.cmbServiceID.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), int.Parse(this.txtAmount.Text), this.cbPaid.Checked, ref err);
+
+                            // Load lại dữ liệu trên DataGridView
+                            LoadData();
+
+                            // Thông báo
+                            MessageBox.Show("Added successfully!");
+                        }
+                    }
+                    catch (SqlException)
+                    {
+                        MessageBox.Show("Added failed!");
+                    }
+                }
+                else
+                {
+                    if (this.cmbRoomID.Text == "" || this.cmbServiceID.Text == "" || this.txtAmount.Text == "")
+                    {
+                        if (this.cmbRoomID.Text == "")
+                        {
+                            MessageBox.Show("No Room ID selected !");
+                            return;
+                        }
+                        else
+                        {
+                            if (this.cmbServiceID.Text == "")
+                            {
+                                MessageBox.Show("No Service ID selected !");
+                                return;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please don't leave blank input");
+                                return;
+                            }
+                        }
+                    }
+                    // Thực hiện lệnh
+                    BLUseService blUseService = new BLUseService();
+                    blUseService.UpdateUseService(this.cmbRoomID.SelectedValue.ToString(), this.cmbServiceID.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), int.Parse(this.txtAmount.Text), this.cbPaid.Checked, ref err);
+                    // Thông báo
+                    MessageBox.Show("Edited successfully!");
+                    // Load lại dữ liệu trên DataGridView
+                    LoadData();
+                }
+                // Đóng kết nối
+            }
+            catch { }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -276,33 +321,16 @@ namespace MidtermProjectWindowsProgrammingUTE
         {
             try
             {
-                //dtUseService = new DataTable();
-                //dtRoom = new DataTable();
-                //dtService = new DataTable();
-
-                //dtUseService.Clear();
-                //dtRoom.Clear();
-                //dtService.Clear();
-
-                //DataSet ds = dbUseService.GetUseService();
-                //dtUseService = ds.Tables[0];
-
-                //DataSet dsRoom = dbRoom.GetRoom();
-                //dtRoom = dsRoom.Tables[0];
-
-                //DataSet dsService = dbService.GetService();
-                //dtService = dsService.Tables[0];
-                //Đưa dữ liệu lên DataGridView
-                dgvUseService.DataSource = dtUseService;
+                dgvUseService.DataSource = dbUseService.GetUseService();
                 // Thay đổi độ rộng cột
                 dgvUseService.AutoResizeColumns();
                 // Xóa trống các đối tượng trong Panel
                 this.cmbRoomID.ResetText();
-                this.cmbCMND.ResetText();
+                this.cmbServiceID.ResetText();
                 this.dtpDateIn.ResetText();
                 this.txtAmount.ResetText();
                 this.cmbRoomID.Enabled = true;
-                this.cmbCMND.Enabled = true;
+                this.cmbServiceID.Enabled = true;
                 this.dtpDateIn.Enabled = true;
                 this.txtAmount.Enabled = true;
                 // Không cho thao tác trên các nút Lưu / Hủy
@@ -326,9 +354,9 @@ namespace MidtermProjectWindowsProgrammingUTE
                 this.cmbRoomID.DisplayMember = dtRoom.Columns[0].ToString();
                 this.cmbRoomID.ValueMember = dtRoom.Columns[0].ToString();
 
-                this.cmbCMND.DataSource = dtService;
-                this.cmbCMND.DisplayMember = dtService.Columns[0].ToString();
-                this.cmbCMND.ValueMember = dtService.Columns[0].ToString();
+                this.cmbServiceID.DataSource = dtService;
+                this.cmbServiceID.DisplayMember = dtService.Columns[0].ToString();
+                this.cmbServiceID.ValueMember = dtService.Columns[0].ToString();
                 dgvUseService_CellClick(null, null);
             }
             catch (SqlException)

@@ -39,12 +39,14 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.ServiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateUse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Paid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.pbAdd = new System.Windows.Forms.PictureBox();
             this.pbEdit = new System.Windows.Forms.PictureBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.pbCancel = new System.Windows.Forms.PictureBox();
             this.pbSave = new System.Windows.Forms.PictureBox();
             this.gbInfor = new System.Windows.Forms.GroupBox();
+            this.cbPaid = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
@@ -52,7 +54,7 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.label6 = new System.Windows.Forms.Label();
             this.cmbRoomID = new System.Windows.Forms.ComboBox();
             this.dtpDateIn = new System.Windows.Forms.DateTimePicker();
-            this.cmbCMND = new System.Windows.Forms.ComboBox();
+            this.cmbServiceID = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUseService)).BeginInit();
@@ -113,7 +115,8 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.RoomID,
             this.ServiceID,
             this.DateUse,
-            this.Amount});
+            this.Amount,
+            this.Paid});
             this.dgvUseService.Location = new System.Drawing.Point(679, 251);
             this.dgvUseService.Name = "dgvUseService";
             this.dgvUseService.ReadOnly = true;
@@ -157,6 +160,13 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
             this.Amount.Width = 125;
+            // 
+            // Paid
+            // 
+            this.Paid.DataPropertyName = "TrangThai";
+            this.Paid.HeaderText = "Paid";
+            this.Paid.Name = "Paid";
+            this.Paid.ReadOnly = true;
             // 
             // pbAdd
             // 
@@ -224,6 +234,7 @@ namespace MidtermProjectWindowsProgrammingUTE
             // 
             // gbInfor
             // 
+            this.gbInfor.Controls.Add(this.cbPaid);
             this.gbInfor.Controls.Add(this.label2);
             this.gbInfor.Controls.Add(this.label4);
             this.gbInfor.Controls.Add(this.txtAmount);
@@ -231,14 +242,25 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.gbInfor.Controls.Add(this.label6);
             this.gbInfor.Controls.Add(this.cmbRoomID);
             this.gbInfor.Controls.Add(this.dtpDateIn);
-            this.gbInfor.Controls.Add(this.cmbCMND);
+            this.gbInfor.Controls.Add(this.cmbServiceID);
             this.gbInfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbInfor.Location = new System.Drawing.Point(118, 198);
             this.gbInfor.Name = "gbInfor";
-            this.gbInfor.Size = new System.Drawing.Size(400, 260);
+            this.gbInfor.Size = new System.Drawing.Size(460, 260);
             this.gbInfor.TabIndex = 85;
             this.gbInfor.TabStop = false;
             this.gbInfor.Text = "Information";
+            // 
+            // cbPaid
+            // 
+            this.cbPaid.AutoSize = true;
+            this.cbPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.cbPaid.Location = new System.Drawing.Point(378, 113);
+            this.cbPaid.Name = "cbPaid";
+            this.cbPaid.Size = new System.Drawing.Size(66, 28);
+            this.cbPaid.TabIndex = 101;
+            this.cbPaid.Text = "Paid";
+            this.cbPaid.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -309,15 +331,15 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.dtpDateIn.Size = new System.Drawing.Size(200, 30);
             this.dtpDateIn.TabIndex = 81;
             // 
-            // cmbCMND
+            // cmbServiceID
             // 
-            this.cmbCMND.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCMND.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.cmbCMND.FormattingEnabled = true;
-            this.cmbCMND.Location = new System.Drawing.Point(156, 107);
-            this.cmbCMND.Name = "cmbCMND";
-            this.cmbCMND.Size = new System.Drawing.Size(200, 33);
-            this.cmbCMND.TabIndex = 80;
+            this.cmbServiceID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbServiceID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.cmbServiceID.FormattingEnabled = true;
+            this.cmbServiceID.Location = new System.Drawing.Point(156, 107);
+            this.cmbServiceID.Name = "cmbServiceID";
+            this.cmbServiceID.Size = new System.Drawing.Size(200, 33);
+            this.cmbServiceID.TabIndex = 80;
             // 
             // FrmUseService
             // 
@@ -367,10 +389,6 @@ namespace MidtermProjectWindowsProgrammingUTE
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.PictureBox pbCancel;
         private System.Windows.Forms.PictureBox pbSave;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RoomID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateUse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.GroupBox gbInfor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
@@ -379,6 +397,12 @@ namespace MidtermProjectWindowsProgrammingUTE
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbRoomID;
         private System.Windows.Forms.DateTimePicker dtpDateIn;
-        private System.Windows.Forms.ComboBox cmbCMND;
+        private System.Windows.Forms.ComboBox cmbServiceID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RoomID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateUse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Paid;
+        private System.Windows.Forms.CheckBox cbPaid;
     }
 }

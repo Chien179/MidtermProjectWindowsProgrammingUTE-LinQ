@@ -1,34 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Data.Linq;
+using System;
 namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 {
     class BLUseService
     {
-        public System.Data.Linq.Table<SuDungDichVu> GetUseService()
+        public Table<SuDungDichVu> GetUseService()
         {
-            DataSet ds = new DataSet();
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             return qlKS.SuDungDichVus;
         }
-        public bool AddUseService(string MaPhong, string MaDV, string NgaySuDung, int SoLuong,string TrangThai, ref string err)
+
+
+        public bool AddUseService(string MaPhong, string MaDV, DateTime NgaySuDung, int SoLuong, bool TrangThai, ref string err)
         {
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             SuDungDichVu sddv = new SuDungDichVu();
             sddv.MaPhong = MaPhong;
             sddv.MaDV = MaDV;
-            //sddv.NgaySuDung = NgaySuDung;
+            sddv.NgaySuDung = NgaySuDung;
             sddv.SoLuong = SoLuong;
-            //sddv.TrangThai = TrangThai;
+            sddv.TrangThai = TrangThai;
+
             qlKS.SuDungDichVus.InsertOnSubmit(sddv);
             qlKS.SuDungDichVus.Context.SubmitChanges();
             return true;
+
         }
-        public bool UpdateUseService(string MaPhong, string MaDV, string NgaySuDung, int SoLuong, string TrangThai, ref string err)
+
+        public bool UpdateUseService(string MaPhong, string MaDV, DateTime NgaySuDung, int SoLuong, bool TrangThai, ref string err)
         {
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             var sddvQuery = (from sddv in qlKS.SuDungDichVus
@@ -40,11 +42,12 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             {
                 sddvQuery.MaPhong = MaPhong;
                 sddvQuery.MaDV = MaDV;
-                //sddvQuery.NgaySuDung = NgaySuDung;
+                sddvQuery.NgaySuDung = NgaySuDung;
                 sddvQuery.SoLuong = SoLuong;
-                //sddvQuery.TrangThai = TrangThai;
+                sddvQuery.TrangThai = TrangThai;
                 qlKS.SubmitChanges();
             }
+
             return true;
         }
     }

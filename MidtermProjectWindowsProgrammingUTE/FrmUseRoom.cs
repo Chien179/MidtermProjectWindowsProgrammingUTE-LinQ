@@ -69,45 +69,86 @@ namespace MidtermProjectWindowsProgrammingUTE
 
         private void pbSave_Click(object sender, EventArgs e)
         {
-            //// Mở kết nối
-            //// Thêm dữ liệu
-            //if (Them)
-            //{
-            //    try
-            //    {
-            //        // Thực hiện lệnh
-            //        BLUseRoom blUseRoom = new BLUseRoom();
-            //        if (this.cmbRoomID.Text != "" && this.cmbCMND.Text != "")
-            //        {
-            //            float Deposit = 0;
-            //            if (this.txtDeposit.Text != "")
-            //            {
-            //                Deposit = float.Parse(this.txtDeposit.Text);
-            //            }
-            //            blUseRoom.AddUseRoom(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), this.dtpDateIn.Text, this.dtpDateIn.Text, Deposit, ref err);
-            //            // Thông báo
-            //            MessageBox.Show("Added successfully!");
-            //            // Load lại dữ liệu trên DataGridView
-            //            LoadData();
-            //        }
-            //    }
-            //    catch (SqlException)
-            //    {
-            //        this.gbInfor.Text = "Information";
-            //        MessageBox.Show("Added failed!");
-            //    }
-            //}
-            //else
-            //{
-            //    // Thực hiện lệnh
-            //    BLUseRoom blUseRoom = new BLUseRoom();
-            //    blUseRoom.UpdateUseRoom(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), this.dtpDateIn.Text, this.dtpDateIn.Text, float.Parse(this.txtDeposit.Text), ref err);
-            //    // Thông báo
-            //    MessageBox.Show("Edited successfully!");
-            //    // Load lại dữ liệu trên DataGridView
-            //    LoadData();
-            //}
-            //// Đóng kết nối
+            // Mở kết nối
+            // Thêm dữ liệu
+            if (Them)
+            {
+                if (this.cmbRoomID.Text == "" || this.cmbStaffID.Text == "" || this.cmbCMND.Text == "")
+                {
+                    if (this.cmbRoomID.Text == "")
+                    {
+                        MessageBox.Show("No Room ID selected !");
+                        return;
+                    }
+                    else
+                    {
+                        if (this.cmbStaffID.Text == "")
+                        {
+                            MessageBox.Show("No Staff ID selected !");
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please don't leave blank input");
+                            return;
+                        }
+                    }
+                }
+                try
+                {
+                    // Thực hiện lệnh
+                    BLUseRoom blUseRoom = new BLUseRoom();
+                    if (this.cmbRoomID.Text != "" && this.cmbCMND.Text != "")
+                    {
+                        float Deposit = 0;
+                        if (this.txtDeposit.Text != "")
+                        {
+                            Deposit = float.Parse(this.txtDeposit.Text);
+                        }
+                        blUseRoom.AddUseRoom(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), float.Parse(this.txtDeposit.Text), this.cmbStaffID.Text, this.cbPaid.Checked, ref err);
+                        // Load lại dữ liệu trên DataGridView
+                        LoadData();
+                        // Thông báo
+                        MessageBox.Show("Added successfully!");
+                    }
+                }
+                catch (SqlException)
+                {
+                    this.gbInfor.Text = "Information";
+                    MessageBox.Show("Added failed!");
+                }
+            }
+            else
+            {
+                if (this.cmbRoomID.Text == "" || this.cmbStaffID.Text == "" || this.cmbCMND.Text == "")
+                {
+                    if (this.cmbRoomID.Text == "")
+                    {
+                        MessageBox.Show("No Room ID selected !");
+                        return;
+                    }
+                    else
+                    {
+                        if (this.cmbStaffID.Text == "")
+                        {
+                            MessageBox.Show("No Staff ID selected !");
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please don't leave blank input");
+                            return;
+                        }
+                    }
+                }
+                // Thực hiện lệnh
+                BLUseRoom blUseRoom = new BLUseRoom();
+                blUseRoom.UpdateUseRoom(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), float.Parse(this.txtDeposit.Text), this.cmbStaffID.Text, this.cbPaid.Checked, ref err);
+                MessageBox.Show("Edited successfully!");
+                // Load lại dữ liệu trên DataGridView
+                LoadData();
+            }
+            // Đóng kết nối
         }
 
         private void dgvRoom_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -124,6 +165,7 @@ namespace MidtermProjectWindowsProgrammingUTE
 
                     this.dtpDateIn.Text = dgvRoom.Rows[r].Cells["CheckIn"].Value.ToString();
                     this.txtDeposit.Text = dgvRoom.Rows[r].Cells["Deposit"].Value.ToString();
+                    this.cbPaid.Checked = Convert.ToBoolean(dgvRoom.Rows[r].Cells["Paid"].Value);
                 }
             }
             catch (Exception)
@@ -278,29 +320,8 @@ namespace MidtermProjectWindowsProgrammingUTE
         {
             try
             {
-                //dtUseRoom = new DataTable();
-                //dtRoom = new DataTable();
-                //dtClient = new DataTable();
-                //dtStaff = new DataTable();
-
-                //dtUseRoom.Clear();
-                //dtRoom.Clear();
-                //dtClient.Clear();
-                //dtStaff.Clear();
-
-                //DataSet dsstaff = dbStaff.GetStaff();
-                //dtStaff = dsstaff.Tables[0];
-
-                //DataSet ds = dbUseRoom.GetUseRoom();
-                //dtUseRoom = ds.Tables[0];
-
-                //DataSet dsRoom = dbRoom.GetRoom();
-                //dtRoom = dsRoom.Tables[0];
-
-                //DataSet dsClient = dbCLient.GetClient();
-                //dtClient = dsClient.Tables[0];
-                //Đưa dữ liệu lên DataGridView
-                dgvRoom.DataSource = dtUseRoom;
+              
+                dgvRoom.DataSource = dbUseRoom.GetUseRoom();
                 // Thay đổi độ rộng cột
                 dgvRoom.AutoResizeColumns();
                 // Xóa trống các đối tượng trong Panel

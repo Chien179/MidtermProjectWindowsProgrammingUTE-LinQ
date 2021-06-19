@@ -147,6 +147,20 @@ namespace MidtermProjectWindowsProgrammingUTE
             // Thêm dữ liệu
             if (Them)
             {
+                if (this.txtID.Text == "" || this.txtName.Text == "")
+                {
+                    if (this.txtID.Text == "")
+                    {
+                        MessageBox.Show("Please fill in Staff's CMND !");
+                        return;
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Please fill in Staff's Name !");
+                        return;
+                    }
+                }
                 for (int i = 0; i < dgvStaff.Rows.Count; i++)
                 {
                     string t = txtID.Text.Trim();
@@ -166,11 +180,13 @@ namespace MidtermProjectWindowsProgrammingUTE
                     BLStaff blStaff = new BLStaff();
                     if (this.txtID.Text != "")
                     {
-                        blStaff.AddStaff(this.txtID.Text, this.txtName.Text, this.txtChucVu.Text, this.dtpBirthDate.Text, this.cbFemale.Checked.ToString(), ref err);
-                        // Thông báo
-                        MessageBox.Show("Added successfully!");
+                        blStaff.AddStaff(this.txtID.Text, this.txtName.Text, this.txtChucVu.Text, DateTime.Parse(this.dtpBirthDate.Text), this.cbFemale.Checked, ref err);
+
                         // Load lại dữ liệu trên DataGridView
                         LoadData();
+
+                        // Thông báo
+                        MessageBox.Show("Added successfully!");
                     }
                 }
                 catch (SqlException)
@@ -181,9 +197,23 @@ namespace MidtermProjectWindowsProgrammingUTE
             }
             else
             {
+                if (this.txtID.Text == "" || this.txtName.Text == "")
+                {
+                    if (this.txtID.Text == "")
+                    {
+                        MessageBox.Show("Please fill in Staff's CMND !");
+                        return;
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Please fill in Staff's Name !");
+                        return;
+                    }
+                }
                 // Thực hiện lệnh
                 BLStaff blStaff = new BLStaff();
-                blStaff.UpdateStaff(this.txtID.Text, this.txtName.Text, this.txtChucVu.Text, this.dtpBirthDate.Text, this.cbFemale.Checked.ToString(), ref err);
+                blStaff.UpdateStaff(this.txtID.Text, this.txtName.Text, this.txtChucVu.Text, DateTime.Parse(this.dtpBirthDate.Text), this.cbFemale.Checked, ref err);
                 // Thông báo
                 MessageBox.Show("Edited successfully!");
                 // Load lại dữ liệu trên DataGridView
@@ -320,11 +350,7 @@ namespace MidtermProjectWindowsProgrammingUTE
         {
             try
             {
-                //dtStaff = new DataTable();
-                //dtStaff.Clear();
-                //DataSet ds = dbStaff.GetStaff();
-                //dtStaff = ds.Tables[0];
-                //Đưa dữ liệu lên DataGridView
+               
                 dgvStaff.DataSource = dbStaff.GetStaff();
                 // Thay đổi độ rộng cột
                 dgvStaff.AutoResizeColumns();

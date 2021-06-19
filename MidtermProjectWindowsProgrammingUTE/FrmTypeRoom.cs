@@ -317,11 +317,7 @@ namespace MidtermProjectWindowsProgrammingUTE
         {
             try
             {
-                //dtTypeRoom = new DataTable();
-                //dtTypeRoom.Clear();
-                //DataSet ds = dbTypeRoom.GetTypeRoom();
-                //dtTypeRoom = ds.Tables[0];
-                // Đưa dữ liệu lên DataGridView
+                
                 dgvTypeRoom.DataSource = dbTypeRoom.GetTypeRoom();
                 // Thay đổi độ rộng cột
                 dgvTypeRoom.AutoResizeColumns();
