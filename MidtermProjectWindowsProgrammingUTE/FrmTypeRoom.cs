@@ -14,6 +14,7 @@ namespace MidtermProjectWindowsProgrammingUTE
         DataTable dtTypeRoom = null;
         // Khai báo biến kiểm tra việc Thêm hay Sửa dữ liệu
         bool Them;
+        bool logout = false;
         string err = "";
         BLTypeRoom dbTypeRoom = new BLTypeRoom();
         #endregion
@@ -188,53 +189,53 @@ namespace MidtermProjectWindowsProgrammingUTE
 
         private void pbDelete_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (dgvTypeRoom.Rows.Count > 0)
-            //    {
-            //        this.gbInfor.Text = "Deleting.....";
-            //        // Thực hiện lệnh 
-            //        // Lấy thứ tự record hiện hành 
-            //        int r = dgvTypeRoom.CurrentCell.RowIndex;
-            //        // Lấy MaKH của record hiện hành 
-            //        string strTypeRoom = dgvTypeRoom.Rows[r].Cells[0].Value.ToString();
-            //        // Viết câu lệnh SQL 
-            //        // Hiện thông báo xác nhận việc xóa mẫu tin 
-            //        // Khai báo biến traloi 
-            //        DialogResult traloi;
-            //        // Hiện hộp thoại hỏi đáp 
-            //        traloi = MessageBox.Show("Are you sure?", "Delete row", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //        // Kiểm tra có nhắp chọn nút Ok không?
-            //        if (traloi == DialogResult.Yes)
-            //        {
-            //            dbTypeRoom.DeleteTypeRoom(ref err, strTypeRoom);
-            //            if (err == "")
-            //            {
-            //                // Thông báo 
-            //                MessageBox.Show("Deleted successfully!");
-            //                // Cập nhật lại DataGridView 
-            //                LoadData();
-            //            }
-            //            else
-            //            {
-            //                this.gbInfor.Text = "Information";
-            //                // Thông báo 
-            //                MessageBox.Show("There are rooms with this type room !", "Deleted failed!");
-            //            }
-            //        }
-            //        else
-            //        {
-            //            this.gbInfor.Text = "Information";
-            //            // Thông báo 
-            //            MessageBox.Show("Deleted failed!");
-            //        }
-            //    }
-            //}
-            //catch (SqlException)
-            //{
-            //    this.gbInfor.Text = "Information";
-            //    MessageBox.Show("Deleted failed!");
-            //}
+            try
+            {
+                if (dgvTypeRoom.Rows.Count > 0)
+                {
+                    this.gbInfor.Text = "Deleting.....";
+                    // Thực hiện lệnh 
+                    // Lấy thứ tự record hiện hành 
+                    int r = dgvTypeRoom.CurrentCell.RowIndex;
+                    // Lấy MaKH của record hiện hành 
+                    string strTypeRoom = dgvTypeRoom.Rows[r].Cells[0].Value.ToString();
+                    // Viết câu lệnh SQL 
+                    // Hiện thông báo xác nhận việc xóa mẫu tin 
+                    // Khai báo biến traloi 
+                    DialogResult traloi;
+                    // Hiện hộp thoại hỏi đáp 
+                    traloi = MessageBox.Show("Are you sure?", "Delete row", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    // Kiểm tra có nhắp chọn nút Ok không?
+                    if (traloi == DialogResult.Yes)
+                    {
+                        dbTypeRoom.DeleteTypeRoom(ref err, strTypeRoom);
+                        if (err == "")
+                        {
+                            // Thông báo 
+                            MessageBox.Show("Deleted successfully!");
+                            // Cập nhật lại DataGridView 
+                            LoadData();
+                        }
+                        else
+                        {
+                            this.gbInfor.Text = "Information";
+                            // Thông báo 
+                            MessageBox.Show("There are rooms with this type room !", "Deleted failed!");
+                        }
+                    }
+                    else
+                    {
+                        this.gbInfor.Text = "Information";
+                        // Thông báo 
+                        MessageBox.Show("Deleted failed!");
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                this.gbInfor.Text = "Information";
+                MessageBox.Show("Deleted failed!");
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -382,5 +383,16 @@ namespace MidtermProjectWindowsProgrammingUTE
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         #endregion
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            logout = true;
+            this.Close();
+        }
+
+        public bool Logout
+        {
+            get { return logout; }
+        }
     }
 }

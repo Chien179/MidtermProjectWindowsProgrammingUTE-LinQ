@@ -12,6 +12,7 @@ namespace MidtermProjectWindowsProgrammingUTE
         #region Properties
         // Khai báo biến kiểm tra việc Thêm hay Sửa dữ liệu
         bool Them;
+        bool logout = false;
         string err = "";
         BLClient dbClient = new BLClient();
         #endregion
@@ -227,7 +228,7 @@ namespace MidtermProjectWindowsProgrammingUTE
 
         private void pbDelete_Click(object sender, EventArgs e)
         {
-            try
+                try
             {
                 if (dgvClient.Rows.Count > 0)
                 {
@@ -394,15 +395,8 @@ namespace MidtermProjectWindowsProgrammingUTE
         {
             try
             {
-                //List<string> proKH = dbClient.GetClientProperties();
-                //// Đưa dữ liệu lên DataGridView
-                //(dgvClient.Columns["KhachHang"] as DataGridViewComboBoxColumn).DataSource = dbClient.GetClient();
-                //(dgvClient.Columns["KhachHang"] as DataGridViewComboBoxColumn).DisplayMember = proKH[1];
-                //(dgvClient.Columns["KhachHang"] as DataGridViewComboBoxColumn).ValueMember = proKH[0];
 
                 dgvClient.DataSource = dbClient.GetClient();
-
-                //dgvClient.Columns["KhachHang1"].Visible = false;
 
                 // Thay đổi độ rộng cột
                 dgvClient.AutoResizeColumns();
@@ -475,5 +469,16 @@ namespace MidtermProjectWindowsProgrammingUTE
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         #endregion
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            logout = true;
+            this.Close();
+        }
+
+        public bool Logout
+        {
+            get { return logout; }
+        }
     }
 }

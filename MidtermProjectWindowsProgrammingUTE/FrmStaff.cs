@@ -14,6 +14,7 @@ namespace MidtermProjectWindowsProgrammingUTE
         DataTable dtStaff = null;
         // Khai báo biến kiểm tra việc Thêm hay Sửa dữ liệu
         bool Them;
+        bool logout = false;
         string err = "";
         BLStaff dbStaff = new BLStaff();
         #endregion
@@ -91,54 +92,54 @@ namespace MidtermProjectWindowsProgrammingUTE
 
         private void pbDelete_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (dgvStaff.Rows.Count > 0)
-            //    {
-            //        this.gbInfor.Text = "Deleting.....";
-            //        // Thực hiện lệnh 
-            //        // Lấy thứ tự record hiện hành 
-            //        int r = dgvStaff.CurrentCell.RowIndex;
-            //        // Lấy MaKH của record hiện hành 
-            //        string strCMND = dgvStaff.Rows[r].Cells[0].Value.ToString();
-            //        // Viết câu lệnh SQL 
-            //        // Hiện thông báo xác nhận việc xóa mẫu tin 
-            //        // Khai báo biến traloi 
-            //        DialogResult traloi;
-            //        // Hiện hộp thoại hỏi đáp 
-            //        traloi = MessageBox.Show("Are you sure?", "Delete row",
-            //        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //        // Kiểm tra có nhắp chọn nút Ok không? 
-            //        if (traloi == DialogResult.Yes)
-            //        {
-            //            dbStaff.DeleteStaff(ref err, strCMND);
-            //            if (err == "")
-            //            {
-            //                // Thông báo 
-            //                MessageBox.Show("Deleted successfully!");
-            //                // Cập nhật lại DataGridView 
-            //                LoadData();
-            //            }
-            //            else
-            //            {
-            //                this.gbInfor.Text = "Information";
-            //                // Thông báo 
-            //                MessageBox.Show("Staff is still using room !", "Delete failed!");
-            //            }
-            //        }
-            //        else
-            //        {
-            //            this.gbInfor.Text = "Information";
-            //            // Thông báo 
-            //            MessageBox.Show("Delete failed!");
-            //        }
-            //    }
-            //}
-            //catch (SqlException)
-            //{
-            //    this.gbInfor.Text = "Information";
-            //    MessageBox.Show("Delete failed!");
-            //}
+            try
+            {
+                if (dgvStaff.Rows.Count > 0)
+                {
+                    this.gbInfor.Text = "Deleting.....";
+                    // Thực hiện lệnh 
+                    // Lấy thứ tự record hiện hành 
+                    int r = dgvStaff.CurrentCell.RowIndex;
+                    // Lấy MaKH của record hiện hành 
+                    string strCMND = dgvStaff.Rows[r].Cells[0].Value.ToString();
+                    // Viết câu lệnh SQL 
+                    // Hiện thông báo xác nhận việc xóa mẫu tin 
+                    // Khai báo biến traloi 
+                    DialogResult traloi;
+                    // Hiện hộp thoại hỏi đáp 
+                    traloi = MessageBox.Show("Are you sure?", "Delete row",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    // Kiểm tra có nhắp chọn nút Ok không? 
+                    if (traloi == DialogResult.Yes)
+                    {
+                        dbStaff.DeleteStaff(ref err, strCMND);
+                        if (err == "")
+                        {
+                            // Thông báo 
+                            MessageBox.Show("Deleted successfully!");
+                            // Cập nhật lại DataGridView 
+                            LoadData();
+                        }
+                        else
+                        {
+                            this.gbInfor.Text = "Information";
+                            // Thông báo 
+                            MessageBox.Show("Staff is still using room !", "Delete failed!");
+                        }
+                    }
+                    else
+                    {
+                        this.gbInfor.Text = "Information";
+                        // Thông báo 
+                        MessageBox.Show("Delete failed!");
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                this.gbInfor.Text = "Information";
+                MessageBox.Show("Delete failed!");
+            }
         }
 
         private void pbSave_Click(object sender, EventArgs e)
@@ -273,6 +274,10 @@ namespace MidtermProjectWindowsProgrammingUTE
             {
                 MessageBox.Show("Cannot load data into DataGridView !");
             }
+        }
+        private void pbBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
         #endregion
 
@@ -420,6 +425,47 @@ namespace MidtermProjectWindowsProgrammingUTE
             pb.Image = Image.FromFile(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\Images\\" + picture);
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
         }
+
         #endregion
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            logout = true;
+            this.Close();
+        }
+
+        public bool Logout
+        {
+            get { return logout; }
+        }
+        private void txtID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtChucVu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void cbSex_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.txtFind.Focus();
+            Search();
+        }
     }
 }

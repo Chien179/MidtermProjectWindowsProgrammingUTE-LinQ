@@ -1,7 +1,8 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Data.Linq;
 using System;
-using System.Linq;
 namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 {
     class BLService
@@ -11,6 +12,15 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             DataSet ds = new DataSet();
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             return qlKS.DichVus;
+        }
+        public List<string> GetServiceProperties()
+        {
+            var propertiesDV = (from dv in typeof(DichVu).GetProperties()
+                               select dv.Name);
+
+            List<string> ProDV = propertiesDV.ToList();
+
+            return ProDV;
         }
 
         public bool AddService(string MaDV, string TenDV, float GiaTien, string DonViTinh, ref string err)
@@ -59,5 +69,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             qlKS.SubmitChanges();
             return true;
         }
+        //public DataSet SearchService(string key)
     }
 }

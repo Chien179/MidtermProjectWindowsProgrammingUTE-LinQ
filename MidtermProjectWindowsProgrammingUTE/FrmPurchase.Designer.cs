@@ -61,6 +61,10 @@
             this.pbDelete = new System.Windows.Forms.PictureBox();
             this.btnReceipt = new System.Windows.Forms.Button();
             this.cbStatus = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblNhanVien = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnPaid = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBack)).BeginInit();
@@ -77,29 +81,26 @@
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1713, 177);
+            this.panel1.Size = new System.Drawing.Size(1285, 144);
             this.panel1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(700, 46);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(525, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(263, 63);
+            this.label1.Size = new System.Drawing.Size(213, 51);
             this.label1.TabIndex = 0;
             this.label1.Text = "Purchase";
             // 
             // txtFind
             // 
             this.txtFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtFind.Location = new System.Drawing.Point(905, 242);
-            this.txtFind.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFind.Location = new System.Drawing.Point(679, 197);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(288, 37);
+            this.txtFind.Size = new System.Drawing.Size(217, 31);
             this.txtFind.TabIndex = 22;
             this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             // 
@@ -115,12 +116,11 @@
             this.StaffID,
             this.CheckIn,
             this.PurchaseDate});
-            this.dgvPurchase.Location = new System.Drawing.Point(905, 308);
-            this.dgvPurchase.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvPurchase.Location = new System.Drawing.Point(679, 250);
             this.dgvPurchase.Name = "dgvPurchase";
             this.dgvPurchase.ReadOnly = true;
             this.dgvPurchase.RowHeadersWidth = 51;
-            this.dgvPurchase.Size = new System.Drawing.Size(791, 421);
+            this.dgvPurchase.Size = new System.Drawing.Size(593, 342);
             this.dgvPurchase.TabIndex = 20;
             this.dgvPurchase.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPurchase_CellClick);
             // 
@@ -182,10 +182,9 @@
             // pbBack
             // 
             this.pbBack.Image = ((System.Drawing.Image)(resources.GetObject("pbBack.Image")));
-            this.pbBack.Location = new System.Drawing.Point(16, 186);
-            this.pbBack.Margin = new System.Windows.Forms.Padding(4);
+            this.pbBack.Location = new System.Drawing.Point(12, 151);
             this.pbBack.Name = "pbBack";
-            this.pbBack.Size = new System.Drawing.Size(73, 64);
+            this.pbBack.Size = new System.Drawing.Size(55, 52);
             this.pbBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbBack.TabIndex = 38;
             this.pbBack.TabStop = false;
@@ -196,10 +195,9 @@
             // pbAdd
             // 
             this.pbAdd.Image = ((System.Drawing.Image)(resources.GetObject("pbAdd.Image")));
-            this.pbAdd.Location = new System.Drawing.Point(172, 640);
-            this.pbAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.pbAdd.Location = new System.Drawing.Point(129, 520);
             this.pbAdd.Name = "pbAdd";
-            this.pbAdd.Size = new System.Drawing.Size(80, 71);
+            this.pbAdd.Size = new System.Drawing.Size(60, 58);
             this.pbAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAdd.TabIndex = 96;
             this.pbAdd.TabStop = false;
@@ -210,10 +208,9 @@
             // pbEdit
             // 
             this.pbEdit.Image = ((System.Drawing.Image)(resources.GetObject("pbEdit.Image")));
-            this.pbEdit.Location = new System.Drawing.Point(281, 640);
-            this.pbEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.pbEdit.Location = new System.Drawing.Point(211, 520);
             this.pbEdit.Name = "pbEdit";
-            this.pbEdit.Size = new System.Drawing.Size(80, 71);
+            this.pbEdit.Size = new System.Drawing.Size(60, 58);
             this.pbEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbEdit.TabIndex = 94;
             this.pbEdit.TabStop = false;
@@ -226,10 +223,9 @@
             this.btnSearch.BackColor = System.Drawing.SystemColors.Control;
             this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearch.Location = new System.Drawing.Point(1203, 242);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearch.Location = new System.Drawing.Point(902, 197);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(43, 38);
+            this.btnSearch.Size = new System.Drawing.Size(32, 31);
             this.btnSearch.TabIndex = 99;
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -237,10 +233,9 @@
             // pbCancel
             // 
             this.pbCancel.Image = ((System.Drawing.Image)(resources.GetObject("pbCancel.Image")));
-            this.pbCancel.Location = new System.Drawing.Point(679, 640);
-            this.pbCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.pbCancel.Location = new System.Drawing.Point(509, 520);
             this.pbCancel.Name = "pbCancel";
-            this.pbCancel.Size = new System.Drawing.Size(80, 71);
+            this.pbCancel.Size = new System.Drawing.Size(60, 58);
             this.pbCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCancel.TabIndex = 98;
             this.pbCancel.TabStop = false;
@@ -251,10 +246,9 @@
             // pbSave
             // 
             this.pbSave.Image = ((System.Drawing.Image)(resources.GetObject("pbSave.Image")));
-            this.pbSave.Location = new System.Drawing.Point(571, 640);
-            this.pbSave.Margin = new System.Windows.Forms.Padding(4);
+            this.pbSave.Location = new System.Drawing.Point(428, 520);
             this.pbSave.Name = "pbSave";
-            this.pbSave.Size = new System.Drawing.Size(80, 71);
+            this.pbSave.Size = new System.Drawing.Size(60, 58);
             this.pbSave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSave.TabIndex = 97;
             this.pbSave.TabStop = false;
@@ -277,11 +271,9 @@
             this.gbInfor.Controls.Add(this.txtPurchaseID);
             this.gbInfor.Controls.Add(this.label5);
             this.gbInfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.gbInfor.Location = new System.Drawing.Point(172, 186);
-            this.gbInfor.Margin = new System.Windows.Forms.Padding(4);
+            this.gbInfor.Location = new System.Drawing.Point(129, 151);
             this.gbInfor.Name = "gbInfor";
-            this.gbInfor.Padding = new System.Windows.Forms.Padding(4);
-            this.gbInfor.Size = new System.Drawing.Size(527, 447);
+            this.gbInfor.Size = new System.Drawing.Size(395, 363);
             this.gbInfor.TabIndex = 104;
             this.gbInfor.TabStop = false;
             this.gbInfor.Text = "Information";
@@ -291,30 +283,28 @@
             this.cmbStaffID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStaffID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cmbStaffID.FormattingEnabled = true;
-            this.cmbStaffID.Location = new System.Drawing.Point(244, 259);
-            this.cmbStaffID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbStaffID.Location = new System.Drawing.Point(183, 210);
+            this.cmbStaffID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbStaffID.Name = "cmbStaffID";
-            this.cmbStaffID.Size = new System.Drawing.Size(233, 37);
+            this.cmbStaffID.Size = new System.Drawing.Size(176, 32);
             this.cmbStaffID.TabIndex = 107;
             // 
             // dtpDateIn
             // 
             this.dtpDateIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dtpDateIn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateIn.Location = new System.Drawing.Point(244, 319);
-            this.dtpDateIn.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpDateIn.Location = new System.Drawing.Point(183, 259);
             this.dtpDateIn.Name = "dtpDateIn";
-            this.dtpDateIn.Size = new System.Drawing.Size(233, 36);
+            this.dtpDateIn.Size = new System.Drawing.Size(176, 30);
             this.dtpDateIn.TabIndex = 106;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label6.Location = new System.Drawing.Point(8, 325);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(6, 264);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(119, 29);
+            this.label6.Size = new System.Drawing.Size(96, 25);
             this.label6.TabIndex = 106;
             this.label6.Text = "Check In:";
             // 
@@ -322,10 +312,9 @@
             // 
             this.lblStaffID.AutoSize = true;
             this.lblStaffID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblStaffID.Location = new System.Drawing.Point(8, 265);
-            this.lblStaffID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStaffID.Location = new System.Drawing.Point(6, 215);
             this.lblStaffID.Name = "lblStaffID";
-            this.lblStaffID.Size = new System.Drawing.Size(114, 31);
+            this.lblStaffID.Size = new System.Drawing.Size(88, 25);
             this.lblStaffID.TabIndex = 106;
             this.lblStaffID.Text = "Staff ID:";
             // 
@@ -333,10 +322,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(8, 84);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(6, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(172, 31);
+            this.label2.Size = new System.Drawing.Size(135, 25);
             this.label2.TabIndex = 17;
             this.label2.Text = "Purchase ID:";
             // 
@@ -345,40 +333,37 @@
             this.cmbRoomID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoomID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cmbRoomID.FormattingEnabled = true;
-            this.cmbRoomID.Location = new System.Drawing.Point(244, 199);
-            this.cmbRoomID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbRoomID.Location = new System.Drawing.Point(183, 162);
+            this.cmbRoomID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbRoomID.Name = "cmbRoomID";
-            this.cmbRoomID.Size = new System.Drawing.Size(233, 37);
+            this.cmbRoomID.Size = new System.Drawing.Size(176, 32);
             this.cmbRoomID.TabIndex = 41;
             // 
             // dtpPurchaseDate
             // 
             this.dtpPurchaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dtpPurchaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpPurchaseDate.Location = new System.Drawing.Point(244, 383);
-            this.dtpPurchaseDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpPurchaseDate.Location = new System.Drawing.Point(183, 311);
             this.dtpPurchaseDate.Name = "dtpPurchaseDate";
-            this.dtpPurchaseDate.Size = new System.Drawing.Size(233, 36);
+            this.dtpPurchaseDate.Size = new System.Drawing.Size(176, 30);
             this.dtpPurchaseDate.TabIndex = 32;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.Location = new System.Drawing.Point(8, 148);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(6, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 31);
+            this.label3.Size = new System.Drawing.Size(66, 25);
             this.label3.TabIndex = 18;
             this.label3.Text = "Total:";
             // 
             // txtTotal
             // 
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtTotal.Location = new System.Drawing.Point(244, 142);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTotal.Location = new System.Drawing.Point(183, 115);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(233, 36);
+            this.txtTotal.Size = new System.Drawing.Size(176, 30);
             this.txtTotal.TabIndex = 30;
             this.txtTotal.Text = "\r\n";
             this.txtTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotal_KeyPress);
@@ -387,40 +372,36 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label4.Location = new System.Drawing.Point(8, 208);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(6, 169);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 31);
+            this.label4.Size = new System.Drawing.Size(100, 25);
             this.label4.TabIndex = 19;
             this.label4.Text = "Room ID:";
             // 
             // txtPurchaseID
             // 
             this.txtPurchaseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtPurchaseID.Location = new System.Drawing.Point(244, 78);
-            this.txtPurchaseID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPurchaseID.Location = new System.Drawing.Point(183, 63);
             this.txtPurchaseID.Name = "txtPurchaseID";
-            this.txtPurchaseID.Size = new System.Drawing.Size(132, 36);
+            this.txtPurchaseID.Size = new System.Drawing.Size(100, 30);
             this.txtPurchaseID.TabIndex = 29;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label5.Location = new System.Drawing.Point(8, 389);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(6, 316);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(202, 31);
+            this.label5.Size = new System.Drawing.Size(160, 25);
             this.label5.TabIndex = 21;
             this.label5.Text = "Purchase Date:";
             // 
             // pbDelete
             // 
             this.pbDelete.Image = ((System.Drawing.Image)(resources.GetObject("pbDelete.Image")));
-            this.pbDelete.Location = new System.Drawing.Point(395, 640);
-            this.pbDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.pbDelete.Location = new System.Drawing.Point(296, 520);
             this.pbDelete.Name = "pbDelete";
-            this.pbDelete.Size = new System.Drawing.Size(80, 71);
+            this.pbDelete.Size = new System.Drawing.Size(60, 58);
             this.pbDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbDelete.TabIndex = 105;
             this.pbDelete.TabStop = false;
@@ -430,10 +411,9 @@
             // 
             // btnReceipt
             // 
-            this.btnReceipt.Location = new System.Drawing.Point(1551, 242);
-            this.btnReceipt.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReceipt.Location = new System.Drawing.Point(1163, 197);
             this.btnReceipt.Name = "btnReceipt";
-            this.btnReceipt.Size = new System.Drawing.Size(145, 49);
+            this.btnReceipt.Size = new System.Drawing.Size(109, 40);
             this.btnReceipt.TabIndex = 106;
             this.btnReceipt.Text = "Receipt";
             this.btnReceipt.UseVisualStyleBackColor = true;
@@ -441,18 +421,63 @@
             // cbStatus
             // 
             this.cbStatus.AutoSize = true;
-            this.cbStatus.Location = new System.Drawing.Point(728, 334);
+            this.cbStatus.Location = new System.Drawing.Point(546, 271);
+            this.cbStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(58, 21);
+            this.cbStatus.Size = new System.Drawing.Size(47, 17);
             this.cbStatus.TabIndex = 107;
             this.cbStatus.Text = "Paid";
             this.cbStatus.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label8.Location = new System.Drawing.Point(1023, 161);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(46, 18);
+            this.label8.TabIndex = 130;
+            this.label8.Text = "label8";
+            // 
+            // lblNhanVien
+            // 
+            this.lblNhanVien.AutoSize = true;
+            this.lblNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblNhanVien.Location = new System.Drawing.Point(940, 161);
+            this.lblNhanVien.Name = "lblNhanVien";
+            this.lblNhanVien.Size = new System.Drawing.Size(77, 18);
+            this.lblNhanVien.TabIndex = 129;
+            this.lblNhanVien.Text = "Nhân viên:";
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(1163, 151);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(109, 40);
+            this.btnLogout.TabIndex = 128;
+            this.btnLogout.Text = "Log Out";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnPaid
+            // 
+            this.btnPaid.Location = new System.Drawing.Point(1048, 197);
+            this.btnPaid.Name = "btnPaid";
+            this.btnPaid.Size = new System.Drawing.Size(109, 40);
+            this.btnPaid.TabIndex = 131;
+            this.btnPaid.Text = "Paid";
+            this.btnPaid.UseVisualStyleBackColor = true;
+            this.btnPaid.Click += new System.EventHandler(this.btnPaid_Click);
+            // 
             // FrmPurchase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1712, 743);
+            this.ClientSize = new System.Drawing.Size(1284, 604);
+            this.Controls.Add(this.btnPaid);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lblNhanVien);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.btnReceipt);
             this.Controls.Add(this.pbDelete);
@@ -468,7 +493,6 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPurchase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Purchase";
@@ -523,5 +547,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseDate;
         private System.Windows.Forms.ComboBox cmbStaffID;
         private System.Windows.Forms.CheckBox cbStatus;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblNhanVien;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnPaid;
     }
 }

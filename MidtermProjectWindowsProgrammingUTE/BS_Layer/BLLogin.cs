@@ -13,10 +13,9 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             return qlKS.TaiKhoans;
         }
-        //public bool CheckAccount(string namelogin, string password, ref string err)
-        //{
-            
-        //}
+        // public bool CheckAccount(string namelogin, string password, ref string err)
+
+        
         public bool DeleteClient(ref string err, string CMND)
         {
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
@@ -50,5 +49,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 
             return true;
         }
+        // public DataSet SearchClient(string key, int Sex)
     }
 }

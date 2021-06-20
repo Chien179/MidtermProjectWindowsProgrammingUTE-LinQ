@@ -12,8 +12,15 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             return qlKS.KhachHangs;
         }
+        public List<string> GetClientProperties()
+        {
+            var propertiesKH = (from kh in typeof(KhachHang).GetProperties()
+                                select kh.Name);
 
-        
+            List<string> ProKH = propertiesKH.ToList();
+
+            return ProKH;
+        }
         public bool AddClient(string CMND, string TenKhachHang, string DiaChi, string SoDienThoai, bool GioiTinh, DateTime NgaySinh, ref string err)
         {
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
@@ -64,6 +71,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             return true;
         }
 
-
+        //public DataSet SearchClient(string key, int Sex)
     }
 }

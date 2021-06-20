@@ -17,6 +17,7 @@ namespace MidtermProjectWindowsProgrammingUTE
         DataTable dtStaff = null;
         // Khai báo biến kiểm tra việc Thêm hay Sửa dữ liệu
         bool Them;
+        bool logout = false;
         string err;
         BLUseRoom dbUseRoom = new BLUseRoom();
         BLClient dbCLient = new BLClient();
@@ -351,17 +352,17 @@ namespace MidtermProjectWindowsProgrammingUTE
                 this.pbEdit.Show();
                 this.pbBack.Show();
                 //đẩy dữ liệu lên cmb RoomID và CMND
-                this.cmbRoomID.DataSource = dtRoom;
-                this.cmbRoomID.DisplayMember = dtRoom.Columns[0].ToString();
-                this.cmbRoomID.ValueMember = dtRoom.Columns[0].ToString();
+                //this.cmbRoomID.DataSource = dtRoom;
+                //this.cmbRoomID.DisplayMember = dtRoom.Columns[0].ToString();
+                //this.cmbRoomID.ValueMember = dtRoom.Columns[0].ToString();
 
-                this.cmbCMND.DataSource = dtClient;
-                this.cmbCMND.DisplayMember = dtClient.Columns[0].ToString();
-                this.cmbCMND.ValueMember = dtClient.Columns[0].ToString();
+                //this.cmbCMND.DataSource = dtClient;
+                //this.cmbCMND.DisplayMember = dtClient.Columns[0].ToString();
+                //this.cmbCMND.ValueMember = dtClient.Columns[0].ToString();
 
-                this.cmbStaffID.DataSource = dtStaff;
-                this.cmbStaffID.DisplayMember = dtStaff.Columns[0].ToString();
-                this.cmbStaffID.ValueMember = dtStaff.Columns[0].ToString();
+                //this.cmbStaffID.DataSource = dtStaff;
+                //this.cmbStaffID.DisplayMember = dtStaff.Columns[0].ToString();
+                //this.cmbStaffID.ValueMember = dtStaff.Columns[0].ToString();
 
 
                 dgvRoom_CellClick(null, null);
@@ -403,5 +404,16 @@ namespace MidtermProjectWindowsProgrammingUTE
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         #endregion
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            logout = true;
+            this.Close();
+        }
+
+        public bool Logout
+        {
+            get { return logout; }
+        }
     }
 }

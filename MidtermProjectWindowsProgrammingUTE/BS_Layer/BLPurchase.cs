@@ -1,7 +1,8 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Data.Linq;
 using System;
-using System.Linq;
 namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 {
     class BLPurchase
@@ -10,6 +11,16 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
         {
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             return qlKS.ThanhToans;
+        }
+
+        public List<string> GetPurchaseProperties()
+        {
+            var propertiesTT = (from tt in typeof(ThanhToan).GetProperties()
+                                select tt.Name);
+
+            List<string> ProTT = propertiesTT.ToList();
+
+            return ProTT;
         }
 
         public bool AddPurchase(string MaTT, decimal ThanhTien,DateTime NgayThanhToan, string MaPhong, string MaNV, bool TrangThai, ref string err)
@@ -63,5 +74,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             return true;
 
         }
+        //public decimal Bill(ref string err, string MaPhong, string NgayThanhToan)
     }
 }

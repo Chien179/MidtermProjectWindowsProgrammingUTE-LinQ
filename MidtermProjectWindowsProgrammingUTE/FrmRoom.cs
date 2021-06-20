@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace MidtermProjectWindowsProgrammingUTE
 {
@@ -15,6 +16,7 @@ namespace MidtermProjectWindowsProgrammingUTE
         DataTable dtTypeRoom = null;
         // Khai báo biến kiểm tra việc Thêm hay Sửa dữ liệu
         bool Them;
+        bool logout = false;
         string err = "";
         BLRoom dbRoom = new BLRoom();
         BLTypeRoom dbTypeRoom = new BLTypeRoom();
@@ -241,53 +243,53 @@ namespace MidtermProjectWindowsProgrammingUTE
 
         private void pbDelete_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (dgvRoom.Rows.Count > 0)
-            //    {
-            //        // Thực hiện lệnh 
-            //        // Lấy thứ tự record hiện hành 
-            //        int r = dgvRoom.CurrentCell.RowIndex;
-            //        // Lấy MaKH của record hiện hành 
-            //        string strRoomID = dgvRoom.Rows[r].Cells[0].Value.ToString();
-            //        // Viết câu lệnh SQL 
-            //        // Hiện thông báo xác nhận việc xóa mẫu tin 
-            //        // Khai báo biến traloi 
-            //        DialogResult traloi;
-            //        // Hiện hộp thoại hỏi đáp 
-            //        traloi = MessageBox.Show("Are you sure?", "Delete row",
-            //        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //        // Kiểm tra có nhắp chọn nút Ok không? 
-            //        if (traloi == DialogResult.Yes)
-            //        {
-            //            dbRoom.DeleteRoom(ref err, strRoomID);
-            //            if (err == "")
-            //            {
-            //                // Thông báo 
-            //                MessageBox.Show("Deleted successfully!");
-            //                // Cập nhật lại DataGridView 
-            //                LoadData();
-            //            }
-            //            else
-            //            {
-            //                this.gbInfor.Text = "Information";
-            //                // Thông báo 
-            //                MessageBox.Show("Room currently in use !", "Delete failed!");
-            //            }
-            //        }
-            //        else
-            //        {
-            //            this.gbInfor.Text = "Information";
-            //            // Thông báo 
-            //            MessageBox.Show("Delete failed!");
-            //        }
-            //    }
-            //}
-            //catch (SqlException)
-            //{
-            //    this.gbInfor.Text = "Information";
-            //    MessageBox.Show("Delete failed!");
-            //}
+            try
+            {
+                if (dgvRoom.Rows.Count > 0)
+                {
+                    // Thực hiện lệnh 
+                    // Lấy thứ tự record hiện hành 
+                    int r = dgvRoom.CurrentCell.RowIndex;
+                    // Lấy MaKH của record hiện hành 
+                    string strRoomID = dgvRoom.Rows[r].Cells[0].Value.ToString();
+                    // Viết câu lệnh SQL 
+                    // Hiện thông báo xác nhận việc xóa mẫu tin 
+                    // Khai báo biến traloi 
+                    DialogResult traloi;
+                    // Hiện hộp thoại hỏi đáp 
+                    traloi = MessageBox.Show("Are you sure?", "Delete row",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    // Kiểm tra có nhắp chọn nút Ok không? 
+                    if (traloi == DialogResult.Yes)
+                    {
+                        dbRoom.DeleteRoom(ref err, strRoomID);
+                        if (err == "")
+                        {
+                            // Thông báo 
+                            MessageBox.Show("Deleted successfully!");
+                            // Cập nhật lại DataGridView 
+                            LoadData();
+                        }
+                        else
+                        {
+                            this.gbInfor.Text = "Information";
+                            // Thông báo 
+                            MessageBox.Show("Room currently in use !", "Delete failed!");
+                        }
+                    }
+                    else
+                    {
+                        this.gbInfor.Text = "Information";
+                        // Thông báo 
+                        MessageBox.Show("Delete failed!");
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                this.gbInfor.Text = "Information";
+                MessageBox.Show("Delete failed!");
+            }
         }
 
         #endregion
@@ -380,7 +382,14 @@ namespace MidtermProjectWindowsProgrammingUTE
         {
             try
             {
-                
+                List<string> ProLP = dbTypeRoom.GetTypeRoomProperties();
+                // Đưa dữ liệu lên DataGridView
+                (dgvRoom.Columns["RoomType"] as DataGridViewComboBoxColumn).DataSource = dbTypeRoom.GetTypeRoomProperties();
+                (dgvRoom.Columns["RoomType"] as DataGridViewComboBoxColumn).DisplayMember = ProLP[1];
+                (dgvRoom.Columns["RoomType"] as DataGridViewComboBoxColumn).ValueMember = ProLP[0];
+
+                //dgvKhachHang.Columns["ThanhPho1"].Visible = false;
+
                 dgvRoom.DataSource = dbRoom.GetRoom();
                 // Thay đổi độ rộng cột
                 dgvRoom.AutoResizeColumns();
@@ -413,7 +422,9 @@ namespace MidtermProjectWindowsProgrammingUTE
                 this.pbDelete.Show();
                 this.pbBack.Show();
                 //đẩy dữ liệu lên cmbTypeRoom
-                
+                this.cmbRoomType.DataSource = dtTypeRoom;
+                this.cmbRoomType.DisplayMember = dtTypeRoom.Columns[0].ToString();
+                this.cmbRoomType.ValueMember = dtTypeRoom.Columns[0].ToString();
                 dgvRoom_CellClick(null, null);
             }
             catch (SqlException)
@@ -450,5 +461,32 @@ namespace MidtermProjectWindowsProgrammingUTE
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         #endregion
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            logout = true;
+            this.Close();
+        }
+
+        public bool Logout
+        {
+            get { return logout; }
+        }
+
+        private void txtRoomID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrice_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

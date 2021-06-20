@@ -13,9 +13,10 @@ namespace MidtermProjectWindowsProgrammingUTE
         #region Properties
         DataTable dtUseService = null;
         DataTable dtService = null;
-        DataTable dtRoom = null;
+        DataTable dtUseRoom = null;
         // Khai báo biến kiểm tra việc Thêm hay Sửa dữ liệu
         bool Them;
+        bool logout = false;
         string err;
         BLUseService dbUseService = new BLUseService();
         BLService dbService = new BLService();
@@ -186,7 +187,7 @@ namespace MidtermProjectWindowsProgrammingUTE
                             {
                                 Amount = int.Parse(this.txtAmount.Text);
                             }
-                            blUseService.AddUseService(this.cmbRoomID.SelectedValue.ToString(), this.cmbServiceID.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), int.Parse(this.txtAmount.Text),  ref err);
+                            blUseService.AddUseService(this.cmbRoomID.SelectedValue.ToString(), this.cmbServiceID.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), int.Parse(this.txtAmount.Text), ref err);
 
                             // Load lại dữ liệu trên DataGridView
                             LoadData();
@@ -349,13 +350,13 @@ namespace MidtermProjectWindowsProgrammingUTE
                 this.pbEdit.Show();
                 this.pbBack.Show();
                 //đẩy dữ liệu lên cmb RoomID và CMND
-                this.cmbRoomID.DataSource = dtRoom;
-                this.cmbRoomID.DisplayMember = dtRoom.Columns[0].ToString();
-                this.cmbRoomID.ValueMember = dtRoom.Columns[0].ToString();
+                //this.cmbRoomID.DataSource = dbRoom.GetRoom();
+                //this.cmbRoomID.DisplayMember = dtRoom.Columns[0].ToString();
+                //this.cmbRoomID.ValueMember = dtRoom.Columns[0].ToString();
 
-                this.cmbServiceID.DataSource = dtService;
-                this.cmbServiceID.DisplayMember = dtService.Columns[0].ToString();
-                this.cmbServiceID.ValueMember = dtService.Columns[0].ToString();
+                //this.cmbServiceID.DataSource = dbService.GetService();
+                //this.cmbServiceID.DisplayMember = dtService.Columns[0].ToString();
+                //this.cmbServiceID.ValueMember = dtService.Columns[0].ToString();
                 dgvUseService_CellClick(null, null);
             }
             catch (SqlException)
@@ -394,5 +395,16 @@ namespace MidtermProjectWindowsProgrammingUTE
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         #endregion
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            logout = true;
+            this.Close();
+        }
+
+        public bool Logout
+        {
+            get { return logout; }
+        }
     }
 }

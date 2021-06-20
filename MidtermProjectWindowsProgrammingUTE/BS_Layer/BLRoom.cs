@@ -1,7 +1,8 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Data.Linq;
 using System;
-using System.Linq;
 namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 {
     class BLRoom
@@ -12,7 +13,15 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             return qlKS.Phongs;
         }
+        public List<string> GetRoomProperties()
+        {
+            var propertiesP = (from p in typeof(Phong).GetProperties()
+                                select p.Name);
 
+            List<string> ProP = propertiesP.ToList();
+
+            return ProP;
+        }
         public bool AddRoom(string MaPhong, string MaLoai, bool TrangThai, string GhiChu, string DienTich, float GiaThue, ref string err)
         {
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
@@ -62,5 +71,22 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             qlKS.SubmitChanges();
             return true;
         }
+        public bool UpdateStatusRoom(string MaPhong,bool TrangThai, ref string err)
+        {
+            QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
+            var pQuery = (from p in qlKS.Phongs
+                          where p.MaPhong == MaPhong
+                          select p).SingleOrDefault();
+
+            if (pQuery != null)
+            {
+                pQuery.TrangThai = true;
+
+                qlKS.SubmitChanges();
+            }
+
+            return true;
+        }
+        //   public DataSet SearchRoom(string key, int Status)
     }
 }

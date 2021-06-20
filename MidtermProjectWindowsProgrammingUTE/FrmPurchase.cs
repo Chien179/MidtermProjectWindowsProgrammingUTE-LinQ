@@ -12,6 +12,7 @@ namespace MidtermProjectWindowsProgrammingUTE
         #region properties
         // Khai báo biến kiểm tra việc Thêm hay Sửa dữ liệu
         bool Them;
+        bool logout = false;
         string err = "";
         BLPurchase dbPurchase = new BLPurchase();
         BLUseRoom dbUseRoom = new BLUseRoom();
@@ -265,13 +266,47 @@ namespace MidtermProjectWindowsProgrammingUTE
             //{
             //    if (dgvPurchase.Rows.Count > 0)
             //    {
+            //        this.gbInfor.Text = "Deleting.....";
+            //        // Thực hiện lệnh 
+            //        // Lấy thứ tự record hiện hành 
             //        int r = dgvPurchase.CurrentCell.RowIndex;
-            //        // Lấy MaTT và MaPhong của record hiện hành 
-            //        string strPurchase = dgvPurchase.Rows[r].Cells[0].Value.ToString();
-            //        string strRoomID = dgvPurchase.Rows[r].Cells[3].Value.ToString();
-            //        dbPurchase.Puchase(ref err, strPurchase, strRoomID);
-            //        MessageBox.Show("Deleted all selected Clients' informations", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        LoadData();
+            //        // Lấy MaKH của record hiện hành 
+            //        string strCMND = dgvPurchase.Rows[r].Cells[0].Value.ToString();
+            //        if (bool.Parse(dgvPurchase.Rows[r].Cells["Paid"].Value.ToString()) == true)
+            //        {
+            //            // Viết câu lệnh SQL 
+            //            // Hiện thông báo xác nhận việc xóa mẫu tin 
+            //            // Khai báo biến traloi 
+            //            DialogResult traloi;
+            //            // Hiện hộp thoại hỏi đáp 
+            //            traloi = MessageBox.Show("Are you sure?", "Delete row",
+            //            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //            // Kiểm tra có nhắp chọn nút Ok không? 
+            //            if (traloi == DialogResult.Yes)
+            //            {
+            //                dbPurchase.DeletePurchase(ref err, this.txtPurchaseID.Text);
+            //                dbUseRoom.DeleteUseRoom(this.cmbRoomID.Text, ref err);
+            //                if (err == "")
+            //                {
+            //                    // Thông báo 
+            //                    MessageBox.Show("Deleted successfully!");
+            //                    // Cập nhật lại DataGridView 
+            //                    LoadData();
+            //                }
+            //                else
+            //                {
+            //                    this.gbInfor.Text = "Information";
+            //                    // Thông báo 
+            //                    MessageBox.Show("Client is still using room !", "Delete failed!");
+            //                }
+            //            }
+            //        }
+            //        else
+            //        {
+            //            this.gbInfor.Text = "Information";
+            //            // Thông báo 
+            //            MessageBox.Show("Delete failed!");
+            //        }
             //    }
             //}
             //catch (SqlException)
@@ -463,5 +498,21 @@ namespace MidtermProjectWindowsProgrammingUTE
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         #endregion
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            logout = true;
+            this.Close();
+        }
+
+        public bool Logout
+        {
+            get { return logout; }
+        }
+
+        private void btnPaid_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

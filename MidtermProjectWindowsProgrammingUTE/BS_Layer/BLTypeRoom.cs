@@ -14,6 +14,15 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             return qlKS.LoaiPhongs;
         }
 
+        public List<string> GetTypeRoomProperties()
+        {
+            var propertiesLP = (from lp in typeof(LoaiPhong).GetProperties()
+                                select lp.Name);
+
+            List<string> ProLP = propertiesLP.ToList();
+
+            return ProLP;
+        }
 
         public bool AddTypeRoom(string MaLoai, string TenLoai, ref string err)
         {
@@ -57,5 +66,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 
             return true;
         }
+       // public DataSet SearchTypeRoom(string key)
     }
 }

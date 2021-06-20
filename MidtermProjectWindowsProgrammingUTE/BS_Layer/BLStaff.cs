@@ -15,7 +15,16 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             return qlKS.NhanViens;
         }
+        //public DataSet GetPosAndNameStaff(string IDStaff)
+        public List<string> GetStaffProperties()
+        {
+            var propertiesNV = (from nv in typeof(DichVu).GetProperties()
+                                select nv.Name);
 
+            List<string> ProNV = propertiesNV.ToList();
+
+            return ProNV;
+        }
 
         public bool AddStaff(string MaNV, string TenNV, string ChucVu, DateTime NamSinh, bool GioiTinh, ref string err)
         {
@@ -65,5 +74,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 
             return true;
         }
+        // public DataSet SearchStaff(string key, int Sex)
     }
 }

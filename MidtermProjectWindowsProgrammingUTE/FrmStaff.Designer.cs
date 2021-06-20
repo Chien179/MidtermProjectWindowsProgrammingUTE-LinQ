@@ -57,6 +57,9 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Female = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.BirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblNhanVien = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).BeginInit();
@@ -159,7 +162,7 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpBirthDate.Location = new System.Drawing.Point(200, 203);
             this.dtpBirthDate.Name = "dtpBirthDate";
-            this.dtpBirthDate.Size = new System.Drawing.Size(200, 30);
+            this.dtpBirthDate.Size = new System.Drawing.Size(176, 30);
             this.dtpBirthDate.TabIndex = 22;
             // 
             // txtChucVu
@@ -290,6 +293,7 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.pbBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbBack.TabIndex = 108;
             this.pbBack.TabStop = false;
+            this.pbBack.Click += new System.EventHandler(this.pbBack_Click);
             this.pbBack.MouseEnter += new System.EventHandler(this.pbBack_MouseEnter);
             this.pbBack.MouseLeave += new System.EventHandler(this.pbBack_MouseLeave);
             // 
@@ -368,11 +372,44 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.BirthDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.BirthDate.Width = 125;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label8.Location = new System.Drawing.Point(1023, 161);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(46, 18);
+            this.label8.TabIndex = 130;
+            this.label8.Text = "label8";
+            // 
+            // lblNhanVien
+            // 
+            this.lblNhanVien.AutoSize = true;
+            this.lblNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblNhanVien.Location = new System.Drawing.Point(940, 161);
+            this.lblNhanVien.Name = "lblNhanVien";
+            this.lblNhanVien.Size = new System.Drawing.Size(77, 18);
+            this.lblNhanVien.TabIndex = 129;
+            this.lblNhanVien.Text = "Nhân viên:";
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(1163, 151);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(109, 40);
+            this.btnLogout.TabIndex = 128;
+            this.btnLogout.Text = "Log Out";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // FrmStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 604);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lblNhanVien);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.pbDelete);
             this.Controls.Add(this.pbCancel);
             this.Controls.Add(this.gbInfor);
@@ -433,5 +470,8 @@ namespace MidtermProjectWindowsProgrammingUTE
         private System.Windows.Forms.DataGridViewTextBoxColumn ChucVu;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Female;
         private System.Windows.Forms.DataGridViewTextBoxColumn BirthDate;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblNhanVien;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

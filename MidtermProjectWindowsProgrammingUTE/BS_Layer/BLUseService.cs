@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿    using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Data.Linq;
@@ -13,6 +13,15 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             return qlKS.SuDungDichVus;
         }
 
+        public List<string> GetUseServiceProperties()
+        {
+            var propertiessddv = (from sddv in typeof(SuDungDichVu).GetProperties()
+                                select sddv.Name);
+
+            List<string> ProTP = propertiessddv.ToList();
+
+            return ProTP;
+        }
 
         public bool AddUseService(string MaPhong, string MaDV, DateTime NgaySuDung, int SoLuong, ref string err)
         {
@@ -63,5 +72,18 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 
             return true;
         }
+        public bool DeleteUseService(string MaPhong, ref string err)
+        {
+            QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
+
+            var sddvQuery = from sddv in qlKS.SuDungDichVus
+                          where sddv.MaPhong == MaPhong
+                          select sddv;
+
+            qlKS.SuDungDichVus.DeleteAllOnSubmit(sddvQuery);
+            qlKS.SubmitChanges();
+            return true;
+        }
+        // public DataSet SearchUseService(string key)
     }
 }

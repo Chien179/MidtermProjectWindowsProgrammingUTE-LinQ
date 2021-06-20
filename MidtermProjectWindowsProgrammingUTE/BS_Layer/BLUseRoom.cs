@@ -13,6 +13,19 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             return qlKS.ThuePhongs;
         }
 
+        //public DataSet GetUseRoomCheckIn(string idroom)
+
+        //public DataSet GetUseRoomUnpaid()
+
+        public List<string> GetUseRoomProperties()
+        {
+            var propertiesTP = (from tp in typeof(ThuePhong).GetProperties()
+                                select tp.Name);
+
+            List<string> ProTP = propertiesTP.ToList();
+
+            return ProTP;
+        }
 
         public bool AddUseRoom(string MaPhong, string CMND, DateTime NgayVao, float DatCoc, String MaNV, ref string err)
         {
@@ -81,5 +94,18 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 
             return true;
         }
+        public bool DeleteUseRoom(string MaPhong, ref string err)
+        {
+            QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
+
+            var tpQuery = from tp in qlKS.ThuePhongs
+                          where tp.MaPhong == MaPhong
+                          select tp;
+
+            qlKS.ThuePhongs.DeleteAllOnSubmit(tpQuery);
+            qlKS.SubmitChanges();
+            return true;
+        }
+        // public DataSet SearchUseRoom(string key)
     }
 }
