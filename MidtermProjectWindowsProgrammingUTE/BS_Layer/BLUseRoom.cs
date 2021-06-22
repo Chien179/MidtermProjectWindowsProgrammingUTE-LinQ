@@ -35,7 +35,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             tp.CMND = CMND;
             tp.NgayVao = NgayVao;
             tp.DatCoc = DatCoc;
-            tp.MaNV = MaNV;
 
             qlKS.ThuePhongs.InsertOnSubmit(tp);
             qlKS.ThuePhongs.Context.SubmitChanges();
@@ -57,7 +56,6 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
                 tpQuery.CMND = CMND;
                 tpQuery.NgayVao = NgayVao;
                 tpQuery.DatCoc = DatCoc;
-                tpQuery.MaNV = MaNV;
                 qlKS.SubmitChanges();
             }
 
