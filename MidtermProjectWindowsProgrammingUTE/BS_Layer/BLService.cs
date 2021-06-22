@@ -13,6 +13,7 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             return qlKS.DichVus;
         }
+
         public List<string> GetServiceProperties()
         {
             var propertiesDV = (from dv in typeof(DichVu).GetProperties()

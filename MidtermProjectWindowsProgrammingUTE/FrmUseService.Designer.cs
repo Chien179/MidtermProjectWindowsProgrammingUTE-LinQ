@@ -35,11 +35,6 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.pbBack = new System.Windows.Forms.PictureBox();
             this.txtFind = new System.Windows.Forms.TextBox();
             this.dgvUseService = new System.Windows.Forms.DataGridView();
-            this.RoomID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateUse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Paid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.pbAdd = new System.Windows.Forms.PictureBox();
             this.pbEdit = new System.Windows.Forms.PictureBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -57,6 +52,11 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.label8 = new System.Windows.Forms.Label();
             this.lblNhanVien = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.RoomID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceID = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.DateUse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Paid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUseService)).BeginInit();
@@ -126,49 +126,6 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.dgvUseService.Size = new System.Drawing.Size(593, 341);
             this.dgvUseService.TabIndex = 85;
             this.dgvUseService.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUseService_CellClick);
-            // 
-            // RoomID
-            // 
-            this.RoomID.DataPropertyName = "MaPhong";
-            this.RoomID.HeaderText = "Room ID";
-            this.RoomID.MinimumWidth = 6;
-            this.RoomID.Name = "RoomID";
-            this.RoomID.ReadOnly = true;
-            this.RoomID.Width = 125;
-            // 
-            // ServiceID
-            // 
-            this.ServiceID.DataPropertyName = "MaDV";
-            this.ServiceID.HeaderText = "Service ID";
-            this.ServiceID.MinimumWidth = 6;
-            this.ServiceID.Name = "ServiceID";
-            this.ServiceID.ReadOnly = true;
-            this.ServiceID.Width = 125;
-            // 
-            // DateUse
-            // 
-            this.DateUse.DataPropertyName = "NgaySuDung";
-            this.DateUse.HeaderText = "Date Use";
-            this.DateUse.MinimumWidth = 6;
-            this.DateUse.Name = "DateUse";
-            this.DateUse.ReadOnly = true;
-            this.DateUse.Width = 125;
-            // 
-            // Amount
-            // 
-            this.Amount.DataPropertyName = "SoLuong";
-            this.Amount.HeaderText = "Amount";
-            this.Amount.MinimumWidth = 6;
-            this.Amount.Name = "Amount";
-            this.Amount.ReadOnly = true;
-            this.Amount.Width = 125;
-            // 
-            // Paid
-            // 
-            this.Paid.DataPropertyName = "TrangThai";
-            this.Paid.HeaderText = "Paid";
-            this.Paid.Name = "Paid";
-            this.Paid.ReadOnly = true;
             // 
             // pbAdd
             // 
@@ -361,6 +318,51 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // RoomID
+            // 
+            this.RoomID.DataPropertyName = "MaPhong";
+            this.RoomID.HeaderText = "Room ID";
+            this.RoomID.MinimumWidth = 6;
+            this.RoomID.Name = "RoomID";
+            this.RoomID.ReadOnly = true;
+            this.RoomID.Width = 125;
+            // 
+            // ServiceID
+            // 
+            this.ServiceID.DataPropertyName = "MaDV";
+            this.ServiceID.HeaderText = "Service ID";
+            this.ServiceID.MinimumWidth = 6;
+            this.ServiceID.Name = "ServiceID";
+            this.ServiceID.ReadOnly = true;
+            this.ServiceID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ServiceID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ServiceID.Width = 125;
+            // 
+            // DateUse
+            // 
+            this.DateUse.DataPropertyName = "NgaySuDung";
+            this.DateUse.HeaderText = "Date Use";
+            this.DateUse.MinimumWidth = 6;
+            this.DateUse.Name = "DateUse";
+            this.DateUse.ReadOnly = true;
+            this.DateUse.Width = 125;
+            // 
+            // Amount
+            // 
+            this.Amount.DataPropertyName = "SoLuong";
+            this.Amount.HeaderText = "Amount";
+            this.Amount.MinimumWidth = 6;
+            this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
+            this.Amount.Width = 125;
+            // 
+            // Paid
+            // 
+            this.Paid.DataPropertyName = "TrangThai";
+            this.Paid.HeaderText = "Paid";
+            this.Paid.Name = "Paid";
+            this.Paid.ReadOnly = true;
+            // 
             // FrmUseService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,13 +423,13 @@ namespace MidtermProjectWindowsProgrammingUTE
         private System.Windows.Forms.ComboBox cmbRoomID;
         private System.Windows.Forms.DateTimePicker dtpDateIn;
         private System.Windows.Forms.ComboBox cmbServiceID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RoomID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateUse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Paid;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblNhanVien;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RoomID;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ServiceID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateUse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Paid;
     }
 }

@@ -18,7 +18,7 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
         //public DataSet GetPosAndNameStaff(string IDStaff)
         public List<string> GetStaffProperties()
         {
-            var propertiesNV = (from nv in typeof(DichVu).GetProperties()
+            var propertiesNV = (from nv in typeof(NhanVien).GetProperties()
                                 select nv.Name);
 
             List<string> ProNV = propertiesNV.ToList();

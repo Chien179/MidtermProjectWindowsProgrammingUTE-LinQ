@@ -1,5 +1,6 @@
 ﻿using MidtermProjectWindowsProgrammingUTE.BS_Layer;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -48,7 +49,6 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.cmbRoomID.ResetText();
             this.cmbCMND.ResetText();
             this.dtpDateIn.ResetText();
-            this.cmbStaffID.ResetText();
             this.txtDeposit.ResetText();
             // Cho thao tác trên các nút Lưu / Hủy / Panel
             this.pbSave.Show();
@@ -74,7 +74,7 @@ namespace MidtermProjectWindowsProgrammingUTE
             // Thêm dữ liệu
             if (Them)
             {
-                if (this.cmbRoomID.Text == "" || this.cmbStaffID.Text == "" || this.cmbCMND.Text == "")
+                if (this.cmbRoomID.Text == "" || this.cmbCMND.Text == "")
                 {
                     if (this.cmbRoomID.Text == "")
                     {
@@ -83,16 +83,8 @@ namespace MidtermProjectWindowsProgrammingUTE
                     }
                     else
                     {
-                        if (this.cmbStaffID.Text == "")
-                        {
-                            MessageBox.Show("No Staff ID selected !");
-                            return;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Please don't leave blank input");
-                            return;
-                        }
+                        MessageBox.Show("Please don't leave blank input");
+                        return;
                     }
                 }
                 try
@@ -106,7 +98,7 @@ namespace MidtermProjectWindowsProgrammingUTE
                         {
                             Deposit = float.Parse(this.txtDeposit.Text);
                         }
-                        blUseRoom.AddUseRoom(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), float.Parse(this.txtDeposit.Text), this.cmbStaffID.Text, ref err);
+                        blUseRoom.AddUseRoom(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), float.Parse(this.txtDeposit.Text), ref err);
                         // Load lại dữ liệu trên DataGridView
                         LoadData();
                         // Thông báo
@@ -121,7 +113,7 @@ namespace MidtermProjectWindowsProgrammingUTE
             }
             else
             {
-                if (this.cmbRoomID.Text == "" || this.cmbStaffID.Text == "" || this.cmbCMND.Text == "")
+                if (this.cmbRoomID.Text == "" || this.cmbCMND.Text == "")
                 {
                     if (this.cmbRoomID.Text == "")
                     {
@@ -130,21 +122,14 @@ namespace MidtermProjectWindowsProgrammingUTE
                     }
                     else
                     {
-                        if (this.cmbStaffID.Text == "")
-                        {
-                            MessageBox.Show("No Staff ID selected !");
-                            return;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Please don't leave blank input");
-                            return;
-                        }
+
+                        MessageBox.Show("Please don't leave blank input");
+                        return;
                     }
                 }
                 // Thực hiện lệnh
                 BLUseRoom blUseRoom = new BLUseRoom();
-                blUseRoom.UpdateUseRoom(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), float.Parse(this.txtDeposit.Text), this.cmbStaffID.Text, ref err);
+                blUseRoom.UpdateUseRoom(this.cmbRoomID.SelectedValue.ToString(), this.cmbCMND.SelectedValue.ToString(), DateTime.Parse(this.dtpDateIn.Text), float.Parse(this.txtDeposit.Text), ref err);
                 MessageBox.Show("Edited successfully!");
                 // Load lại dữ liệu trên DataGridView
                 LoadData();
@@ -206,12 +191,10 @@ namespace MidtermProjectWindowsProgrammingUTE
             this.cmbRoomID.ResetText();
             this.cmbCMND.ResetText();
             this.dtpDateIn.ResetText();
-            this.cmbStaffID.ResetText();
             this.txtDeposit.ResetText();
             this.cmbRoomID.Enabled = true;
             this.cmbCMND.Enabled = true;
             this.dtpDateIn.Enabled = true;
-            this.cmbStaffID.Enabled = true;
             this.txtDeposit.Enabled = true;
             // Cho thao tác trên các nút Thêm / Sửa / Xóa / Thoát 
             this.pbAdd.Enabled = true;
@@ -320,7 +303,8 @@ namespace MidtermProjectWindowsProgrammingUTE
         {
             try
             {
-              
+                List<string> ProKH = dbCLient.GetClientProperties();
+                List<string> ProP = dbRoom.GetRoomProperties();
                 dgvRoom.DataSource = dbUseRoom.GetUseRoom();
                 // Thay đổi độ rộng cột
                 dgvRoom.AutoResizeColumns();
@@ -328,12 +312,10 @@ namespace MidtermProjectWindowsProgrammingUTE
                 this.cmbRoomID.ResetText();
                 this.cmbCMND.ResetText();
                 this.dtpDateIn.ResetText();
-                this.cmbStaffID.ResetText();
                 this.txtDeposit.ResetText();
                 this.cmbRoomID.Enabled = true;
                 this.cmbCMND.Enabled = true;
                 this.dtpDateIn.Enabled = true;
-                this.cmbStaffID.Enabled = true;
                 this.txtDeposit.Enabled = true;
                 // Không cho thao tác trên các nút Lưu / Hủy
                 this.pbSave.Enabled = false;
@@ -352,18 +334,13 @@ namespace MidtermProjectWindowsProgrammingUTE
                 this.pbEdit.Show();
                 this.pbBack.Show();
                 //đẩy dữ liệu lên cmb RoomID và CMND
-                //this.cmbRoomID.DataSource = dtRoom;
-                //this.cmbRoomID.DisplayMember = dtRoom.Columns[0].ToString();
-                //this.cmbRoomID.ValueMember = dtRoom.Columns[0].ToString();
+                this.cmbRoomID.DataSource = dbRoom.GetRoom();
+                this.cmbRoomID.DisplayMember = ProP[0];
+                this.cmbRoomID.ValueMember = ProP[0];
 
-                //this.cmbCMND.DataSource = dtClient;
-                //this.cmbCMND.DisplayMember = dtClient.Columns[0].ToString();
-                //this.cmbCMND.ValueMember = dtClient.Columns[0].ToString();
-
-                //this.cmbStaffID.DataSource = dtStaff;
-                //this.cmbStaffID.DisplayMember = dtStaff.Columns[0].ToString();
-                //this.cmbStaffID.ValueMember = dtStaff.Columns[0].ToString();
-
+                this.cmbCMND.DataSource = dbCLient.GetClient();
+                this.cmbCMND.DisplayMember = ProKH[0];
+                this.cmbCMND.ValueMember = ProKH[0];
 
                 dgvRoom_CellClick(null, null);
             }

@@ -384,12 +384,6 @@ namespace MidtermProjectWindowsProgrammingUTE
             {
                 List<string> ProLP = dbTypeRoom.GetTypeRoomProperties();
                 // Đưa dữ liệu lên DataGridView
-                (dgvRoom.Columns["RoomType"] as DataGridViewComboBoxColumn).DataSource = dbTypeRoom.GetTypeRoomProperties();
-                (dgvRoom.Columns["RoomType"] as DataGridViewComboBoxColumn).DisplayMember = ProLP[1];
-                (dgvRoom.Columns["RoomType"] as DataGridViewComboBoxColumn).ValueMember = ProLP[0];
-
-                //dgvKhachHang.Columns["ThanhPho1"].Visible = false;
-
                 dgvRoom.DataSource = dbRoom.GetRoom();
                 // Thay đổi độ rộng cột
                 dgvRoom.AutoResizeColumns();
@@ -422,9 +416,9 @@ namespace MidtermProjectWindowsProgrammingUTE
                 this.pbDelete.Show();
                 this.pbBack.Show();
                 //đẩy dữ liệu lên cmbTypeRoom
-                this.cmbRoomType.DataSource = dtTypeRoom;
-                this.cmbRoomType.DisplayMember = dtTypeRoom.Columns[0].ToString();
-                this.cmbRoomType.ValueMember = dtTypeRoom.Columns[0].ToString();
+                this.cmbRoomType.DataSource = dbTypeRoom.GetTypeRoom();
+                this.cmbRoomType.DisplayMember = ProLP[0];
+                this.cmbRoomType.ValueMember = ProLP[0];
                 dgvRoom_CellClick(null, null);
             }
             catch (SqlException)

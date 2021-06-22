@@ -48,7 +48,6 @@
       <Column Name="Nu" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="NhanVien_ThanhToan" Member="ThanhToans" ThisKey="MaNV" OtherKey="MaNV" Type="ThanhToan" />
       <Association Name="NhanVien_TaiKhoan" Member="TaiKhoans" ThisKey="MaNV" OtherKey="MaNV" Type="TaiKhoan" />
-      <Association Name="NhanVien_ThanhToan1" Member="ThanhToan1s" ThisKey="MaNV" OtherKey="MaNV" Type="ThanhToan1" />
     </Type>
   </Table>
   <Table Name="dbo.Phong" Member="Phongs">
@@ -61,7 +60,6 @@
       <Column Name="GiaThue" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="Phong_ThanhToan" Member="ThanhToans" ThisKey="MaPhong" OtherKey="MaPhong" Type="ThanhToan" />
       <Association Name="Phong_SuDungDichVu" Member="SuDungDichVus" ThisKey="MaPhong" OtherKey="MaPhong" Type="SuDungDichVu" />
-      <Association Name="Phong_ThanhToan1" Member="ThanhToan1s" ThisKey="MaPhong" OtherKey="MaPhong" Type="ThanhToan1" />
       <Association Name="Phong_ThuePhong" Member="ThuePhongs" ThisKey="MaPhong" OtherKey="MaPhong" Type="ThuePhong" />
       <Association Name="LoaiPhong_Phong" Member="LoaiPhong" ThisKey="MaLoai" OtherKey="MaLoai" Type="LoaiPhong" IsForeignKey="true" />
     </Type>
@@ -83,18 +81,6 @@
       <Column Name="MatKhau" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaNV" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="NhanVien_TaiKhoan" Member="NhanVien" ThisKey="MaNV" OtherKey="MaNV" Type="NhanVien" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ThanhToan" Member="ThanhToan1s">
-    <Type Name="ThanhToan1">
-      <Column Name="MaThanhToan" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ThanhTien" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="NgayThanhToan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="MaPhong" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="MaNV" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TrangThai" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="NhanVien_ThanhToan1" Member="NhanVien" ThisKey="MaNV" OtherKey="MaNV" Type="NhanVien" IsForeignKey="true" />
-      <Association Name="Phong_ThanhToan1" Member="Phong" ThisKey="MaPhong" OtherKey="MaPhong" Type="Phong" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ThuePhong" Member="ThuePhongs">

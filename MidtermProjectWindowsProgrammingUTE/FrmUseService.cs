@@ -1,5 +1,6 @@
 ﻿using MidtermProjectWindowsProgrammingUTE.BS_Layer;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -321,6 +322,14 @@ namespace MidtermProjectWindowsProgrammingUTE
         {
             try
             {
+                List<string> PRoDV = dbService.GetServiceProperties();
+                List<string> PRoP = dbRoom.GetRoomProperties();
+
+                // Đưa dữ liệu lên DataGridView
+                (dgvUseService.Columns["ServiceID"] as DataGridViewComboBoxColumn).DataSource = dbService.GetService();
+                (dgvUseService.Columns["ServiceID"] as DataGridViewComboBoxColumn).DisplayMember = PRoDV[1];
+                (dgvUseService.Columns["ServiceID"] as DataGridViewComboBoxColumn).ValueMember = PRoDV[0];
+
                 dgvUseService.DataSource = dbUseService.GetUseService();
                 // Thay đổi độ rộng cột
                 dgvUseService.AutoResizeColumns();
@@ -350,13 +359,13 @@ namespace MidtermProjectWindowsProgrammingUTE
                 this.pbEdit.Show();
                 this.pbBack.Show();
                 //đẩy dữ liệu lên cmb RoomID và CMND
-                //this.cmbRoomID.DataSource = dbRoom.GetRoom();
-                //this.cmbRoomID.DisplayMember = dtRoom.Columns[0].ToString();
-                //this.cmbRoomID.ValueMember = dtRoom.Columns[0].ToString();
+                this.cmbRoomID.DataSource = dbRoom.GetRoom();
+                this.cmbRoomID.DisplayMember = PRoP[0];
+                this.cmbRoomID.ValueMember = PRoP[0];
 
-                //this.cmbServiceID.DataSource = dbService.GetService();
-                //this.cmbServiceID.DisplayMember = dtService.Columns[0].ToString();
-                //this.cmbServiceID.ValueMember = dtService.Columns[0].ToString();
+                this.cmbServiceID.DataSource = dbService.GetService();
+                this.cmbServiceID.DisplayMember = PRoDV[1];
+                this.cmbServiceID.ValueMember = PRoDV[0];
                 dgvUseService_CellClick(null, null);
             }
             catch (SqlException)

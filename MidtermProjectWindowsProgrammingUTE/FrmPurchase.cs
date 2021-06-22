@@ -1,5 +1,6 @@
 ﻿using MidtermProjectWindowsProgrammingUTE.BS_Layer;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -404,6 +405,8 @@ namespace MidtermProjectWindowsProgrammingUTE
         {
             try
             {
+                List<string> ProP = dbUseRoom.GetUseRoomProperties();
+                List<string> ProNV = dbStaff.GetStaffProperties();
                 //dtPurchase = new DataTable();
                 //dtUseRoom = new DataTable();
                 //dtStaff = new DataTable();
@@ -458,8 +461,13 @@ namespace MidtermProjectWindowsProgrammingUTE
                 this.pbDelete.Show();
                 this.pbBack.Show();
                 //Đưa dữ liệu mã phòng lên combobox
-                //this.cmbRoomID.DataSource = dbUseRoom.GetUseRoom();
+                this.cmbRoomID.DataSource = dbUseRoom.GetUseRoom();
+                this.cmbRoomID.DisplayMember = ProP[0];
+                this.cmbRoomID.ValueMember = ProP[0];
 
+                this.cmbStaffID.DataSource = dbStaff.GetStaff();
+                this.cmbStaffID.DisplayMember = ProNV[0];
+                this.cmbStaffID.ValueMember = ProNV[0];
 
                 //Đưa mã nv lên cmb
                 //this.cmbStaffID.DataSource = dbStaff.GetStaff();

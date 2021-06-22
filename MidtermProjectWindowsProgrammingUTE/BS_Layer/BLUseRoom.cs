@@ -27,7 +27,7 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
             return ProTP;
         }
 
-        public bool AddUseRoom(string MaPhong, string CMND, DateTime NgayVao, float DatCoc, String MaNV, ref string err)
+        public bool AddUseRoom(string MaPhong, string CMND, DateTime NgayVao, float DatCoc, ref string err)
         {
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             ThuePhong tp = new ThuePhong();
@@ -42,7 +42,7 @@ namespace MidtermProjectWindowsProgrammingUTE.BS_Layer
 
         }
 
-        public bool UpdateUseRoom(string MaPhong, string CMND, DateTime NgayVao, float DatCoc, String MaNV, ref string err)
+        public bool UpdateUseRoom(string MaPhong, string CMND, DateTime NgayVao, float DatCoc, ref string err)
         {
             QuanLyKhachSanDataContext qlKS = new QuanLyKhachSanDataContext();
             var tpQuery = (from tp in qlKS.ThuePhongs
